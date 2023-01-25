@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Final Code 2</string>
+    <string name="ok">OK</string>
+    <string name="_0">0</string>
+    <string name="_9">9</string>
+    <string name="_8">8</string>
+    <string name="_7">7</string>
+    <string name="_6">6</string>
+    <string name="c">C</string>
+    <string name="_5">5</string>
+    <string name="_4">4</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
+    <string name="a">A</string>
+    <string name="b">B</string>
+    <string name="_4_unique_numbers_and_8_chances">4 unique numbers and 8 chances</string>
+    <string name="_4_unique_numbers_and_10_chances">4 unique numbers and 10 chances</string>
+    <string name="_5_unique_numbers_and_12_chances">5 unique numbers and 12 chances</string>
+    <string name="todo">TODO</string>
+    <string name="restart">Restart</string>
+    <string name="win">WIN !!</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="home">home</string>
+    <string name="again">again</string>
+    <string name="oops">OOPS !</string>
+    <string name="don_t_give_up_try_again">Don\'t give up… Try again</string>
+    <string name="question">question</string>
+    <string name="how_to_play">How To Play ?</string>
+    <string name="explanation1">You need to guess 4 numbers in 8 times!\n\nA - Means your guess includes one correct number in the correct position.\n\n1B - Means your guess includes one correct number, not in the correct position.\n\n1A2B - Means your guess includes one correct number in the correct position and two correct numbers, not in the correct position.</string>
+    <string name="explanation2">You need to guess 4 numbers in 10 times!\n\nA - Means your guess includes one correct number in the correct position.\n\n1B - Means your guess includes one correct number, not in the correct position.\n\n1A2B - Means your guess includes one correct number in the correct position and two correct numbers, not in the correct position.</string>
+    <string name="explanation3">You need to guess 5 numbers in 12 times!\n\nA - Means your guess includes one correct number in the correct position.\n\n1B - Means your guess includes one correct number, not in the correct position.\n\n1A2B - Means your guess includes one correct number in the correct position and two correct numbers, not in the correct position.</string>
+    <string name="back">back</string>
+</resources>
