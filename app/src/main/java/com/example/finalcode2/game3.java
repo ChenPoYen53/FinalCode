@@ -742,7 +742,7 @@ public class game3 extends AppCompatActivity {
         L_home = dialog.findViewById(R.id.L_home);
         answer = dialog.findViewById(R.id.answer);
 
-        String text = "Answer: "+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3);
+        String text = "Answer: "+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3)+randomNumList.get(4);
         answer.setText(text);
 
         L_again.setOnClickListener(new View.OnClickListener() {
