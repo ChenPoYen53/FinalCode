@@ -633,12 +633,13 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId())
+        if(item.getItemId() == R.id.refresh)
         {
-            case R.id.back:
-                finish();
-            case R.id.refresh:
-                recreate();
+            recreate();
+        }
+        else if(item.getItemId() == R.id.back)
+        {
+            onBackPressed();
         }
         return true;
     }

@@ -777,6 +777,10 @@ public class game3 extends AppCompatActivity {
         if (item.getItemId() == R.id.refresh) {
             recreate();
         }
+        else if(item.getItemId() == R.id.back)
+        {
+            onBackPressed();
+        }
         return true;
     }
 }

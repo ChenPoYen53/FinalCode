@@ -14,9 +14,9 @@
     <string name="_1">1</string>
     <string name="a">A</string>
     <string name="b">B</string>
-    <string name="_4_unique_numbers_and_8_chances">4 unique numbers and 8 chances</string>
-    <string name="_4_unique_numbers_and_10_chances">4 unique numbers and 10 chances</string>
-    <string name="_5_unique_numbers_and_12_chances">5 unique numbers and 12 chances</string>
+    <string name="_4_unique_numbers_and_8_chances">4 unique numbers &amp; 8 chances</string>
+    <string name="_4_unique_numbers_and_10_chances">4 unique numbers &amp; 10 chances</string>
+    <string name="_5_unique_numbers_and_12_chances">5 unique numbers &amp; 12 chances</string>
     <string name="todo">TODO</string>
     <string name="restart">Restart</string>
     <string name="win">WIN !!</string>
