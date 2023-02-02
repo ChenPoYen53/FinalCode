@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".HomePage"
     android:background="@color/white">
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/todo"
         android:maxWidth="300dp"
@@ -19,39 +20,42 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/txv_4_8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/home_page_item"
+        android:backgroundTint="@null"
         android:text="@string/_4_unique_numbers_and_8_chances"
         android:textAlignment="center"
-        android:textSize="20sp"
         android:textColor="@color/white"
-        android:backgroundTint="@null"
-        android:background="@drawable/home_page_item"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
     <TextView
         android:id="@+id/txv_4_10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/home_page_item"
+        android:backgroundTint="@null"
         android:text="@string/_4_unique_numbers_and_10_chances"
         android:textAlignment="center"
-        android:textSize="20sp"
         android:textColor="@color/white"
-        android:backgroundTint="@null"
-        android:background="@drawable/home_page_item"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txv_4_8" />
+
     <TextView
         android:id="@+id/txv_5_12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/home_page_item"
         android:backgroundTint="@null"
         android:text="@string/_5_unique_numbers_and_12_chances"
@@ -61,4 +65,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txv_4_10" />
+
+    <TextView
+        android:id="@+id/txv_mastermind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/home_page_item"
+        android:backgroundTint="@null"
+        android:text="@string/mastermind"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txv_5_12" />
 </androidx.constraintlayout.widget.ConstraintLayout>
