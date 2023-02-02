@@ -126,7 +126,6 @@ public class Mastermind extends AppCompatActivity {
         ok = findViewById(R.id.M_ok);
         backspace = findViewById(R.id.M_backspace);
     }
-
     private void colorButton()
     {
         final Drawable green = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_green);
@@ -141,16 +140,7 @@ public class Mastermind extends AppCompatActivity {
         final Drawable M = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_1);
         final Drawable M2 = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_2);
 
-        int i1 = (int) ((Math.random()*6)+1);
-        int i2 = (int) ((Math.random()*6)+1);
-        int i3 = (int) ((Math.random()*6)+1);
-        int i4 = (int) ((Math.random()*6)+1);
-        randomNumList.add(i1);
-        randomNumList.add(i2);
-        randomNumList.add(i3);
-        randomNumList.add(i4);
-
-        Log.d(TAG,"i..."+i1+i2+i3+i4);
+        randomNumber();
 
         M_L0_1.setBackground(M);
         M_L0_2.setBackground(M);
@@ -403,30 +393,39 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(6);
                     }
 
-                    Log.d(TAG,"randomNumList..."+resultList.get(0)+resultList.get(1)+resultList.get(2)+resultList.get(3));
+                    Log.d(TAG, "randomNumList..." + resultList.get(0) + resultList.get(1) + resultList.get(2) + resultList.get(3));
 
-                    if (randomNumList.size() > 0) {
-                        boolean win = false;
+                    int Num1 = resultList.get(0);
+                    int Num2 = resultList.get(1);
+                    int Num3 = resultList.get(2);
+                    int Num4 = resultList.get(3);
 
-                        int a = 0, b = 0;
+                    if (Num1 == Num2 || Num1 == Num3 || Num1 == Num4 || Num2 == Num3 || Num2 == Num4 || Num3 == Num4) {
+                        Toast.makeText(Mastermind.this, "Can not input same color", Toast.LENGTH_SHORT).show();
+                        resultList.clear();
+                    } else {
+                        if (randomNumList.size() > 0) {
+                            boolean win = false;
 
-                        for (int i = 0; i < 4; i++) {
-                            if (resultList.get(i) == randomNumList.get(i)) {
-                                a++;
-                            } else {
-                                for (int j = 0; j < 4; j++) {
-                                    if (resultList.get(i) == randomNumList.get(j)) {
-                                        b++;
+                            int a = 0, b = 0;
+
+                            for (int i = 0; i < 4; i++) {
+                                if (resultList.get(i) == randomNumList.get(i)) {
+                                    a++;
+                                } else {
+                                    for (int j = 0; j < 4; j++) {
+                                        if (resultList.get(i) == randomNumList.get(j)) {
+                                            b++;
+                                        }
                                     }
                                 }
                             }
-                        }
-                        if (a == 4) {
-                            win = true;
-                        }
-                        Log.d(TAG, "a...b..." + a + "..." + b + "...");
+                            if (a == 4) {
+                                win = true;
+                            }
+                            Log.d(TAG, "a...b..." + a + "..." + b + "...");
 
-                        resultList.clear();
+                            resultList.clear();
                             if (M_L1_1.getBackground().equals(M)) {
                                 M_L1_1.setBackground(M_L0_1.getBackground());
                                 M_L1_2.setBackground(M_L0_2.getBackground());
@@ -501,1074 +500,541 @@ public class Mastermind extends AppCompatActivity {
                                 M_L0_4.setBackground(M);
                             }
 
-                        if(a == 0 & b >= 4)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_red);
-                                M_L1_6.setBackground(result_red);
-                                M_L1_7.setBackground(result_red);
-                                M_L1_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_red);
-                                M_L2_6.setBackground(result_red);
-                                M_L2_7.setBackground(result_red);
-                                M_L2_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_red);
-                                M_L3_6.setBackground(result_red);
-                                M_L3_7.setBackground(result_red);
-                                M_L3_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_red);
-                                M_L4_6.setBackground(result_red);
-                                M_L4_7.setBackground(result_red);
-                                M_L4_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_red);
-                                M_L5_6.setBackground(result_red);
-                                M_L5_7.setBackground(result_red);
-                                M_L5_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_red);
-                                M_L6_6.setBackground(result_red);
-                                M_L6_7.setBackground(result_red);
-                                M_L6_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_red);
-                                M_L7_6.setBackground(result_red);
-                                M_L7_7.setBackground(result_red);
-                                M_L7_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_red);
-                                M_L8_6.setBackground(result_red);
-                                M_L8_7.setBackground(result_red);
-                                M_L8_8.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 0 & b == 3)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_red);
-                                M_L1_6.setBackground(result_red);
-                                M_L1_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_red);
-                                M_L2_6.setBackground(result_red);
-                                M_L2_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_red);
-                                M_L3_6.setBackground(result_red);
-                                M_L3_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_red);
-                                M_L4_6.setBackground(result_red);
-                                M_L4_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_red);
-                                M_L5_6.setBackground(result_red);
-                                M_L5_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_red);
-                                M_L6_6.setBackground(result_red);
-                                M_L6_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_red);
-                                M_L7_6.setBackground(result_red);
-                                M_L7_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_red);
-                                M_L8_6.setBackground(result_red);
-                                M_L8_7.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 0 & b == 2)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_red);
-                                M_L1_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_red);
-                                M_L2_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_red);
-                                M_L3_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_red);
-                                M_L4_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_red);
-                                M_L5_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_red);
-                                M_L6_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_red);
-                                M_L7_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_red);
-                                M_L8_6.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 0 & b == 1)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 0 & b == 0)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_x);
-                                M_L1_6.setBackground(result_x);
-                                M_L1_7.setBackground(result_x);
-                                M_L1_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_x);
-                                M_L2_6.setBackground(result_x);
-                                M_L2_7.setBackground(result_x);
-                                M_L2_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_x);
-                                M_L3_6.setBackground(result_x);
-                                M_L3_7.setBackground(result_x);
-                                M_L3_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_x);
-                                M_L4_6.setBackground(result_x);
-                                M_L4_7.setBackground(result_x);
-                                M_L4_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_x);
-                                M_L5_6.setBackground(result_x);
-                                M_L5_7.setBackground(result_x);
-                                M_L5_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_x);
-                                M_L6_6.setBackground(result_x);
-                                M_L6_7.setBackground(result_x);
-                                M_L6_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_x);
-                                M_L7_6.setBackground(result_x);
-                                M_L7_7.setBackground(result_x);
-                                M_L7_8.setBackground(result_x);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_x);
-                                M_L8_6.setBackground(result_x);
-                                M_L8_7.setBackground(result_x);
-                                M_L8_8.setBackground(result_x);
-                                dialog_lose();
-                            }
-                        }
-                        if(a == 1 && b == 4)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 1 && b == 3)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_red);
-                                M_L1_7.setBackground(result_red);
-                                M_L1_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_red);
-                                M_L2_7.setBackground(result_red);
-                                M_L2_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_red);
-                                M_L3_7.setBackground(result_red);
-                                M_L3_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_red);
-                                M_L4_7.setBackground(result_red);
-                                M_L4_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_red);
-                                M_L5_7.setBackground(result_red);
-                                M_L5_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_red);
-                                M_L6_7.setBackground(result_red);
-                                M_L6_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_red);
-                                M_L7_7.setBackground(result_red);
-                                M_L7_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_red);
-                                M_L8_7.setBackground(result_red);
-                                M_L8_8.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 1 && b == 2)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_red);
-                                M_L1_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_red);
-                                M_L2_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_red);
-                                M_L3_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_red);
-                                M_L4_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_red);
-                                M_L5_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_red);
-                                M_L6_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_red);
-                                M_L7_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_red);
-                                M_L8_7.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 1 && b == 1)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 1 && b == 0)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        if(a == 2 && b == 4)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 2 && b == 3)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 2 && b == 2)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_red);
-                                M_L1_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_red);
-                                M_L2_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_red);
-                                M_L3_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_red);
-                                M_L4_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_red);
-                                M_L5_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_red);
-                                M_L6_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_red);
-                                M_L7_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_red);
-                                M_L8_8.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 2 && b == 1)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 2 && b == 0)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        if(a == 3 && b == 4)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 3 && b == 3)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 3 && b == 2)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 3 && b == 1)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_green);
-                                M_L1_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_green);
-                                M_L2_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_green);
-                                M_L3_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_green);
-                                M_L4_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_green);
-                                M_L5_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_green);
-                                M_L6_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_green);
-                                M_L7_8.setBackground(result_red);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_green);
-                                M_L8_8.setBackground(result_red);
-                                dialog_lose();
-                            }
-                        }
-                        else if(a == 3 && b == 0)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_green);
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_green);
-                                dialog_lose();
-                            }
-                        }
-                        if(a == 4)
-                        {
-                            if(M_L1_5.getBackground().equals(M2))
-                            {
-                                M_L1_5.setBackground(result_green);
-                                M_L1_6.setBackground(result_green);
-                                M_L1_7.setBackground(result_green);
-                                M_L1_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2))
-                            {
-                                M_L2_5.setBackground(result_green);
-                                M_L2_6.setBackground(result_green);
-                                M_L2_7.setBackground(result_green);
-                                M_L2_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2))
-                            {
-                                M_L3_5.setBackground(result_green);
-                                M_L3_6.setBackground(result_green);
-                                M_L3_7.setBackground(result_green);
-                                M_L3_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2))
-                            {
-                                M_L4_5.setBackground(result_green);
-                                M_L4_6.setBackground(result_green);
-                                M_L4_7.setBackground(result_green);
-                                M_L4_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2))
-                            {
-                                M_L5_5.setBackground(result_green);
-                                M_L5_6.setBackground(result_green);
-                                M_L5_7.setBackground(result_green);
-                                M_L5_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2))
-                            {
-                                M_L6_5.setBackground(result_green);
-                                M_L6_6.setBackground(result_green);
-                                M_L6_7.setBackground(result_green);
-                                M_L6_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2))
-                            {
-                                M_L7_5.setBackground(result_green);
-                                M_L7_6.setBackground(result_green);
-                                M_L7_7.setBackground(result_green);
-                                M_L7_8.setBackground(result_green);
-                                dialog();
-                            }
-                            else if(!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2))
-                            {
-                                M_L8_5.setBackground(result_green);
-                                M_L8_6.setBackground(result_green);
-                                M_L8_7.setBackground(result_green);
-                                M_L8_8.setBackground(result_green);
-                                dialog();
-                            }
-                        }
-                        if(!M_L8_1.getBackground().equals(M))
-                        {
-                            if(win)
-                            {
-                                dialog();
-                            }
-                            else
-                            {
-                                dialog_lose();
+                            if (a == 0 & b == 4) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_red);
+                                    M_L1_6.setBackground(result_red);
+                                    M_L1_7.setBackground(result_red);
+                                    M_L1_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_red);
+                                    M_L2_6.setBackground(result_red);
+                                    M_L2_7.setBackground(result_red);
+                                    M_L2_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_red);
+                                    M_L3_6.setBackground(result_red);
+                                    M_L3_7.setBackground(result_red);
+                                    M_L3_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_red);
+                                    M_L4_6.setBackground(result_red);
+                                    M_L4_7.setBackground(result_red);
+                                    M_L4_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_red);
+                                    M_L5_6.setBackground(result_red);
+                                    M_L5_7.setBackground(result_red);
+                                    M_L5_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_red);
+                                    M_L6_6.setBackground(result_red);
+                                    M_L6_7.setBackground(result_red);
+                                    M_L6_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_red);
+                                    M_L7_6.setBackground(result_red);
+                                    M_L7_7.setBackground(result_red);
+                                    M_L7_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_red);
+                                    M_L8_6.setBackground(result_red);
+                                    M_L8_7.setBackground(result_red);
+                                    M_L8_8.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 0 & b == 3) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_red);
+                                    M_L1_6.setBackground(result_red);
+                                    M_L1_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_red);
+                                    M_L2_6.setBackground(result_red);
+                                    M_L2_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_red);
+                                    M_L3_6.setBackground(result_red);
+                                    M_L3_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_red);
+                                    M_L4_6.setBackground(result_red);
+                                    M_L4_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_red);
+                                    M_L5_6.setBackground(result_red);
+                                    M_L5_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_red);
+                                    M_L6_6.setBackground(result_red);
+                                    M_L6_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_red);
+                                    M_L7_6.setBackground(result_red);
+                                    M_L7_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_red);
+                                    M_L8_6.setBackground(result_red);
+                                    M_L8_7.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 0 & b == 2) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_red);
+                                    M_L1_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_red);
+                                    M_L2_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_red);
+                                    M_L3_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_red);
+                                    M_L4_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_red);
+                                    M_L5_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_red);
+                                    M_L6_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_red);
+                                    M_L7_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_red);
+                                    M_L8_6.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 0 & b == 1) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 0 & b == 0) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_x);
+                                    M_L1_6.setBackground(result_x);
+                                    M_L1_7.setBackground(result_x);
+                                    M_L1_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_x);
+                                    M_L2_6.setBackground(result_x);
+                                    M_L2_7.setBackground(result_x);
+                                    M_L2_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_x);
+                                    M_L3_6.setBackground(result_x);
+                                    M_L3_7.setBackground(result_x);
+                                    M_L3_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_x);
+                                    M_L4_6.setBackground(result_x);
+                                    M_L4_7.setBackground(result_x);
+                                    M_L4_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_x);
+                                    M_L5_6.setBackground(result_x);
+                                    M_L5_7.setBackground(result_x);
+                                    M_L5_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_x);
+                                    M_L6_6.setBackground(result_x);
+                                    M_L6_7.setBackground(result_x);
+                                    M_L6_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_x);
+                                    M_L7_6.setBackground(result_x);
+                                    M_L7_7.setBackground(result_x);
+                                    M_L7_8.setBackground(result_x);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_x);
+                                    M_L8_6.setBackground(result_x);
+                                    M_L8_7.setBackground(result_x);
+                                    M_L8_8.setBackground(result_x);
+                                    dialog_lose();
+                                }
+                            }
+                            if (a == 1 && b == 3) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_red);
+                                    M_L1_7.setBackground(result_red);
+                                    M_L1_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_red);
+                                    M_L2_7.setBackground(result_red);
+                                    M_L2_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_red);
+                                    M_L3_7.setBackground(result_red);
+                                    M_L3_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_red);
+                                    M_L4_7.setBackground(result_red);
+                                    M_L4_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_red);
+                                    M_L5_7.setBackground(result_red);
+                                    M_L5_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_red);
+                                    M_L6_7.setBackground(result_red);
+                                    M_L6_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_red);
+                                    M_L7_7.setBackground(result_red);
+                                    M_L7_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_red);
+                                    M_L8_7.setBackground(result_red);
+                                    M_L8_8.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 1 && b == 2) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_red);
+                                    M_L1_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_red);
+                                    M_L2_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_red);
+                                    M_L3_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_red);
+                                    M_L4_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_red);
+                                    M_L5_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_red);
+                                    M_L6_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_red);
+                                    M_L7_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_red);
+                                    M_L8_7.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 1 && b == 1) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 1 && b == 0) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    dialog_lose();
+                                }
+                            }
+                            if (a == 2 && b == 2) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_green);
+                                    M_L1_7.setBackground(result_red);
+                                    M_L1_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_green);
+                                    M_L2_7.setBackground(result_red);
+                                    M_L2_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_green);
+                                    M_L3_7.setBackground(result_red);
+                                    M_L3_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_green);
+                                    M_L4_7.setBackground(result_red);
+                                    M_L4_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_green);
+                                    M_L5_7.setBackground(result_red);
+                                    M_L5_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_green);
+                                    M_L6_7.setBackground(result_red);
+                                    M_L6_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_green);
+                                    M_L7_7.setBackground(result_red);
+                                    M_L7_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_green);
+                                    M_L8_7.setBackground(result_red);
+                                    M_L8_8.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 2 && b == 1) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_green);
+                                    M_L1_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_green);
+                                    M_L2_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_green);
+                                    M_L3_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_green);
+                                    M_L4_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_green);
+                                    M_L5_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_green);
+                                    M_L6_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_green);
+                                    M_L7_7.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_green);
+                                    M_L8_7.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 2 && b == 0) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_green);
+                                    dialog_lose();
+                                }
+                            }
+                            if (a == 3 && b == 1) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_green);
+                                    M_L1_7.setBackground(result_green);
+                                    M_L1_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_green);
+                                    M_L2_7.setBackground(result_green);
+                                    M_L2_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_green);
+                                    M_L3_7.setBackground(result_green);
+                                    M_L3_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_green);
+                                    M_L4_7.setBackground(result_green);
+                                    M_L4_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_green);
+                                    M_L5_7.setBackground(result_green);
+                                    M_L5_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_green);
+                                    M_L6_7.setBackground(result_green);
+                                    M_L6_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_green);
+                                    M_L7_7.setBackground(result_green);
+                                    M_L7_8.setBackground(result_red);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_green);
+                                    M_L8_7.setBackground(result_green);
+                                    M_L8_8.setBackground(result_red);
+                                    dialog_lose();
+                                }
+                            } else if (a == 3 && b == 0) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_green);
+                                    M_L1_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_green);
+                                    M_L2_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_green);
+                                    M_L3_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_green);
+                                    M_L4_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_green);
+                                    M_L5_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_green);
+                                    M_L6_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_green);
+                                    M_L7_7.setBackground(result_green);
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_green);
+                                    M_L8_7.setBackground(result_green);
+                                    dialog_lose();
+                                }
+                            }
+                            if (a == 4) {
+                                if (M_L1_5.getBackground().equals(M2)) {
+                                    M_L1_5.setBackground(result_green);
+                                    M_L1_6.setBackground(result_green);
+                                    M_L1_7.setBackground(result_green);
+                                    M_L1_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
+                                    M_L2_5.setBackground(result_green);
+                                    M_L2_6.setBackground(result_green);
+                                    M_L2_7.setBackground(result_green);
+                                    M_L2_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
+                                    M_L3_5.setBackground(result_green);
+                                    M_L3_6.setBackground(result_green);
+                                    M_L3_7.setBackground(result_green);
+                                    M_L3_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
+                                    M_L4_5.setBackground(result_green);
+                                    M_L4_6.setBackground(result_green);
+                                    M_L4_7.setBackground(result_green);
+                                    M_L4_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
+                                    M_L5_5.setBackground(result_green);
+                                    M_L5_6.setBackground(result_green);
+                                    M_L5_7.setBackground(result_green);
+                                    M_L5_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
+                                    M_L6_5.setBackground(result_green);
+                                    M_L6_6.setBackground(result_green);
+                                    M_L6_7.setBackground(result_green);
+                                    M_L6_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
+                                    M_L7_5.setBackground(result_green);
+                                    M_L7_6.setBackground(result_green);
+                                    M_L7_7.setBackground(result_green);
+                                    M_L7_8.setBackground(result_green);
+                                    dialog();
+                                } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
+                                    M_L8_5.setBackground(result_green);
+                                    M_L8_6.setBackground(result_green);
+                                    M_L8_7.setBackground(result_green);
+                                    M_L8_8.setBackground(result_green);
+                                    dialog();
+                                }
+                            }
+                            if (!M_L8_1.getBackground().equals(M)) {
+                                if (win) {
+                                    dialog();
+                                } else {
+                                    dialog_lose();
+                                }
                             }
                         }
                     }
@@ -1769,5 +1235,34 @@ public class Mastermind extends AppCompatActivity {
             onBackPressed();
         }
         return true;
+    }
+
+    private void randomNumber()
+    {
+        int[] num = new int[6];
+
+        for(int i = 0 ; i<num.length ; i++)
+        {
+            num[i] = i + 1;
+        }
+
+        int[] arr = new int[4];
+        int n;
+
+        for(int i=0 ; i< arr.length ; i++)
+        {
+            n = (int) (Math.random()*(6-i));
+            arr[i] = num[n];
+            for(int j = n; j < num.length-1 ; j++)
+            {
+                num[j] = num[j+1];
+            }
+        }
+        randomNumList.add(arr[0]);
+        randomNumList.add(arr[1]);
+        randomNumList.add(arr[2]);
+        randomNumList.add(arr[3]);
+
+        Log.d(TAG,"arr....."+arr[0]+arr[1]+arr[2]+arr[3]);
     }
 }
