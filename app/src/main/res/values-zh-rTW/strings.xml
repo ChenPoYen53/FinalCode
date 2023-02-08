@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Final Code 2</string>
+    <string name="_4_unique_numbers_and_8_chances">4個不同數字；8次機會</string>
+    <string name="_4_unique_numbers_and_10_chances">4個不同數字；10次機會</string>
+    <string name="_5_unique_numbers_and_12_chances">5個不同數字；12次機會</string>
+    <string name="restart">重新</string>
+    <string name="congratulations">恭喜</string>
+    <string name="home">主畫面</string>
+    <string name="again">再一次</string>
+    <string name="don_t_give_up_try_again">別放棄，再試一次!</string>
+    <string name="question">問題</string>
+    <string name="how_to_play">遊戲規則</string>
+    <string name="explanation1">您必須利用八次機會猜到一組四位數字！\n\n1A - 表示您猜的數字是對的並且在對的位子上。\n\n1B - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
+    <string name="explanation2">您必須利用十次機會猜到一組四位數字！\n\n1A - 表示您猜的數字是對的並且在對的位子上。\n\n1B - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
+    <string name="explanation3">您必須利用十二次機會猜到一組五位數字！\n\n1A - 表示您猜的數字是對的並且在對的位子上。\n\n1B - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
+    <string name="explanation4">您必須利用八次機會猜到四個顏色！\n\n1A - 表示您猜的顏色是對的並且在對的位子上。\n\n1B - 表示您猜的顏色是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個顏色，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的顏色。</string>
+    <string name="back">回上頁</string>
+    <string name="please_insert_5_numbers">請輸入五個數字</string>
+    <string name="please_insert_4_numbers">請輸入四個數字</string>
+    <string name="please_insert_4_colors">請輸入四個顏色</string>
+    <string name="cannot_input_same_numbers">不能有重複的數字</string>
+    <string name="cannot_input_same_colors">不能有重複的顏色</string>
+    <string name="are_you_sure">確定離開嗎？！</string>
+    <string name="finish">結束</string>
+    <string name="stay">繼續</string>
+    <string name="you_ve_been_busy">看來您剛剛在忙！？</string>
+    <string name="_continue">繼續</string>
+    <string name="mastermind">珠璣妙算</string>
+    <string name="Answer">答案：</string>
+    <string name="Max_4_Num">最多四個數字</string>
+    <string name="Max_5_Num">最多五個數字</string>
+    <string name="Max_4_colors">最多四個顏色</string>
+</resources>

@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView _1,_2,_3,_4,_5,_6,_7,_8,_9,_0,C,OK,txv1,txv2,txv3,txv4,
             L1_1,L1_2,L1_3,L1_4,L1_A,L1_B,L2_1,L2_2,L2_3,L2_4,L2_A,L2_B,L3_1,L3_2,L3_3,L3_4,L3_A,L3_B,L4_1,L4_2,L4_3,L4_4,L4_A,L4_B,
             L5_1,L5_2,L5_3,L5_4,L5_A,L5_B,L6_1,L6_2,L6_3,L6_4,L6_A,L6_B,L7_1,L7_2,L7_3,L7_4,L7_A,L7_B,L8_1,L8_2,L8_3,L8_4,L8_A,L8_B,answer;
-    private Button again,home,L_again,L_home,finish,stay;
+    private Button again,home,L_again,L_home,finish,stay,leave_continue,leave_finish;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     @Override
@@ -111,6 +111,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void NumberButton()
     {
+        String Max_4_Num = getString(R.string.Max_4_Num);
         _0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -157,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -182,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -207,7 +208,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -232,7 +233,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -257,7 +258,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -282,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -307,7 +308,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -332,7 +333,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -357,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if(!txv1.getText().equals("") && !txv2.getText().equals("") && !txv3.getText().equals("") && !txv4.getText().equals(""))
                 {
-                    Toast.makeText(MainActivity.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -520,7 +521,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            String toast = getResources().getString(R.string.please_insert_4_numbers);
+            String toast = getString(R.string.please_insert_4_numbers);
             Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
     }
@@ -546,8 +547,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(MainActivity.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -567,7 +567,8 @@ public class MainActivity extends AppCompatActivity {
         L_home = dialog.findViewById(R.id.L_home);
         answer = dialog.findViewById(R.id.answer);
 
-        String text = "Answer: "+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3);
+        String Answer = getString(R.string.Answer);
+        String text = Answer+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3);
         answer.setText(text);
 
         L_again.setOnClickListener(new View.OnClickListener() {
@@ -581,8 +582,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(MainActivity.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -603,10 +603,39 @@ public class MainActivity extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                dialog.dismiss();
                 finish();
             }
         });
         stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
+    private void dialog_leaveHint()
+    {
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.leavehint);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        leave_finish = dialog.findViewById(R.id.leave_finish);
+        leave_continue = dialog.findViewById(R.id.leave_continue);
+
+        leave_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+                finish();
+            }
+        });
+        leave_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
@@ -640,5 +669,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         dialog_backPress();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        dialog_leaveHint();
     }
 }

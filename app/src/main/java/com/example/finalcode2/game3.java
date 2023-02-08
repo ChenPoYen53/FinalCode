@@ -30,7 +30,7 @@ public class game3 extends AppCompatActivity {
             G3_L1_1,G3_L1_2,G3_L1_3,G3_L1_4,G3_L1_5,G3_L1_A,G3_L1_B,G3_L2_1,G3_L2_2,G3_L2_3,G3_L2_4,G3_L2_5,G3_L2_A,G3_L2_B,G3_L3_1,G3_L3_2,G3_L3_3,G3_L3_4,G3_L3_5,G3_L3_A,G3_L3_B,G3_L4_1,G3_L4_2,G3_L4_3,G3_L4_4,G3_L4_5,G3_L4_A,G3_L4_B,
             G3_L5_1,G3_L5_2,G3_L5_3,G3_L5_4,G3_L5_5,G3_L5_A,G3_L5_B,G3_L6_1,G3_L6_2,G3_L6_3,G3_L6_4,G3_L6_5,G3_L6_A,G3_L6_B,G3_L7_1,G3_L7_2,G3_L7_3,G3_L7_4,G3_L7_5,G3_L7_A,G3_L7_B,G3_L8_1,G3_L8_2,G3_L8_3,G3_L8_4,G3_L8_5,G3_L8_A,G3_L8_B,
             G3_L9_1,G3_L9_2,G3_L9_3,G3_L9_4,G3_L9_5,G3_L9_A,G3_L9_B,G3_L10_1,G3_L10_2,G3_L10_3,G3_L10_4,G3_L10_5,G3_L10_A,G3_L10_B,G3_L11_1,G3_L11_2,G3_L11_3,G3_L11_4,G3_L11_5,G3_L11_A,G3_L11_B,G3_L12_1,G3_L12_2,G3_L12_3,G3_L12_4,G3_L12_5,G3_L12_A,G3_L12_B,answer;
-    private Button again,home,L_again,L_home,finish,stay;
+    private Button again,home,L_again,L_home,finish,stay,leave_finish,leave_continue;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     private Game game ;
@@ -157,6 +157,7 @@ public class game3 extends AppCompatActivity {
     }
     private void NumberButton()
     {
+        String Max_5_Num = getString(R.string.Max_5_Num);
         G3_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -182,7 +183,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -211,7 +212,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -240,7 +241,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -269,7 +270,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -298,7 +299,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -327,7 +328,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -356,7 +357,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -385,7 +386,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -414,7 +415,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -443,7 +444,7 @@ public class game3 extends AppCompatActivity {
                 }
                 else if(!G3_txv1.getText().equals("") && !G3_txv2.getText().equals("") && !G3_txv3.getText().equals("") && !G3_txv4.getText().equals("") && !G3_txv5.getText().equals(""))
                 {
-                    Toast.makeText(game3.this, "Mas 5 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game3.this, Max_5_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -693,8 +694,7 @@ public class game3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(game3.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -727,8 +727,7 @@ public class game3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(game3.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -750,6 +749,7 @@ public class game3 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                dialog.dismiss();
             }
         });
         stay.setOnClickListener(new View.OnClickListener() {
@@ -762,6 +762,46 @@ public class game3 extends AppCompatActivity {
         dialog.getWindow().setLayout(width,height);
         dialog.show();
     }
+
+    private void dialog_leaveHint()
+    {
+        Dialog dialog = new Dialog(game3.this);
+        dialog.setContentView(R.layout.leavehint);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        leave_finish = dialog.findViewById(R.id.leave_finish);
+        leave_continue = dialog.findViewById(R.id.leave_continue);
+
+        leave_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                dialog.dismiss();
+            }
+        });
+        leave_continue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        dialog_backPress();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+       dialog_leaveHint();
+    }
+
     //Menu Resources
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

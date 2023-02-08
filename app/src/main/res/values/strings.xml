@@ -1,29 +1,29 @@
 <resources>
     <string name="app_name">Final Code 2</string>
-    <string name="ok">OK</string>
-    <string name="_0">0</string>
-    <string name="_9">9</string>
-    <string name="_8">8</string>
-    <string name="_7">7</string>
-    <string name="_6">6</string>
-    <string name="c">C</string>
-    <string name="_5">5</string>
-    <string name="_4">4</string>
-    <string name="_3">3</string>
-    <string name="_2">2</string>
-    <string name="_1">1</string>
-    <string name="a">A</string>
-    <string name="b">B</string>
+    <string name="ok" translatable="false">OK</string>
+    <string name="_0" translatable="false">0</string>
+    <string name="_9" translatable="false">9</string>
+    <string name="_8" translatable="false">8</string>
+    <string name="_7" translatable="false">7</string>
+    <string name="_6" translatable="false">6</string>
+    <string name="c" translatable="false">C</string>
+    <string name="_5" translatable="false">5</string>
+    <string name="_4" translatable="false">4</string>
+    <string name="_3" translatable="false">3</string>
+    <string name="_2" translatable="false">2</string>
+    <string name="_1" translatable="false">1</string>
+    <string name="a" translatable="false">A</string>
+    <string name="b" translatable="false">B</string>
     <string name="_4_unique_numbers_and_8_chances">4 unique numbers &amp; 8 chances</string>
     <string name="_4_unique_numbers_and_10_chances">4 unique numbers &amp; 10 chances</string>
     <string name="_5_unique_numbers_and_12_chances">5 unique numbers &amp; 12 chances</string>
-    <string name="todo">TODO</string>
+    <string name="todo" translatable="false">TODO</string>
     <string name="restart">Restart</string>
-    <string name="win">WIN !!</string>
+    <string name="win" translatable="false">WIN !!</string>
     <string name="congratulations">Congratulations</string>
     <string name="home">home</string>
     <string name="again">again</string>
-    <string name="oops">OOPS !</string>
+    <string name="oops" translatable="false">OOPS !</string>
     <string name="don_t_give_up_try_again">Don\'t give up… Try again</string>
     <string name="question">question</string>
     <string name="how_to_play">How To Play ?</string>
@@ -41,4 +41,10 @@
     <string name="are_you_sure">Are you sure ?!</string>
     <string name="finish">Finish</string>
     <string name="stay">stay</string>
+    <string name="you_ve_been_busy">You\'ve been busy !?</string>
+    <string name="_continue">continue</string>
+    <string name="Answer">Answer:</string>
+    <string name="Max_4_Num">Up to 4 digits</string>
+    <string name="Max_5_Num">Up to 5 digits</string>
+    <string name="Max_4_colors">Up to 4 colors</string>
 </resources>

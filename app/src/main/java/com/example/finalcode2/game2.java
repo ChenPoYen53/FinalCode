@@ -27,7 +27,7 @@ public class game2 extends AppCompatActivity {
             G2_L1_1,G2_L1_2,G2_L1_3,G2_L1_4,G2_L1_A,G2_L1_B,G2_L2_1,G2_L2_2,G2_L2_3,G2_L2_4,G2_L2_A,G2_L2_B,G2_L3_1,G2_L3_2,G2_L3_3,G2_L3_4,G2_L3_A,G2_L3_B,G2_L4_1,G2_L4_2,G2_L4_3,G2_L4_4,G2_L4_A,G2_L4_B,
             G2_L5_1,G2_L5_2,G2_L5_3,G2_L5_4,G2_L5_A,G2_L5_B,G2_L6_1,G2_L6_2,G2_L6_3,G2_L6_4,G2_L6_A,G2_L6_B,G2_L7_1,G2_L7_2,G2_L7_3,G2_L7_4,G2_L7_A,G2_L7_B,G2_L8_1,G2_L8_2,G2_L8_3,G2_L8_4,G2_L8_A,G2_L8_B,
             G2_L9_1,G2_L9_2,G2_L9_3,G2_L9_4,G2_L9_A,G2_L9_B,G2_L10_1,G2_L10_2,G2_L10_3,G2_L10_4,G2_L10_A,G2_L10_B,answer;
-    private Button again,home,L_again,L_home,finish,stay;
+    private Button again,home,L_again,L_home,finish,stay,leave_continue,leave_finish;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     @Override
@@ -123,6 +123,7 @@ public class game2 extends AppCompatActivity {
     }
     private void NumberButton()
     {
+        String Max_4_Num = getString(R.string.Max_4_Num);
         G2_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,7 +145,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,7 +170,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -194,7 +195,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -219,7 +220,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -244,7 +245,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -269,7 +270,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -294,7 +295,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -319,7 +320,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -344,7 +345,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -369,7 +370,7 @@ public class game2 extends AppCompatActivity {
                 }
                 else if(!G2_txv1.getText().equals("") && !G2_txv2.getText().equals("") && !G2_txv3.getText().equals("") && !G2_txv4.getText().equals(""))
                 {
-                    Toast.makeText(game2.this, "Max 4 Numbers", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(game2.this, Max_4_Num, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -580,8 +581,7 @@ public class game2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(game2.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -600,7 +600,8 @@ public class game2 extends AppCompatActivity {
         L_home = dialog.findViewById(R.id.L_home);
         answer = dialog.findViewById(R.id.answer);
 
-        String text = "Answer: "+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3);
+        String Answer = getString(R.string.Answer);
+        String text = Answer+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3);
         answer.setText(text);
 
         L_again.setOnClickListener(new View.OnClickListener() {
@@ -614,8 +615,7 @@ public class game2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(game2.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -637,9 +637,38 @@ public class game2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                dialog.dismiss();
             }
         });
         stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
+    private void dialog_leaveHint()
+    {
+        Dialog dialog = new Dialog(game2.this);
+        dialog.setContentView(R.layout.leavehint);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        leave_finish = dialog.findViewById(R.id.leave_finish);
+        leave_continue = dialog.findViewById(R.id.leave_continue);
+
+        leave_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                dialog.dismiss();
+            }
+        });
+        leave_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
@@ -672,5 +701,10 @@ public class game2 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         dialog_backPress();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        dialog_leaveHint();
     }
 }

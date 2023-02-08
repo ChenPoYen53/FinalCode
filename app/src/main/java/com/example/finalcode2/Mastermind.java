@@ -33,7 +33,7 @@ public class Mastermind extends AppCompatActivity {
     private TextView M_L1_1,M_L1_2,M_L1_3,M_L1_4,M_L1_5,M_L1_6,M_L1_7,M_L1_8,M_L2_1,M_L2_2,M_L2_3,M_L2_4,M_L2_5,M_L2_6,M_L2_7,M_L2_8,
             M_L3_1,M_L3_2,M_L3_3,M_L3_4,M_L3_5,M_L3_6,M_L3_7,M_L3_8,M_L4_1,M_L4_2,M_L4_3,M_L4_4,M_L4_5,M_L4_6,M_L4_7,M_L4_8,M_L5_1,M_L5_2,M_L5_3,M_L5_4,M_L5_5,M_L5_6,M_L5_7,M_L5_8,
             M_L6_1,M_L6_2,M_L6_3,M_L6_4,M_L6_5,M_L6_6,M_L6_7,M_L6_8,M_L7_1,M_L7_2,M_L7_3,M_L7_4,M_L7_5,M_L7_6,M_L7_7,M_L7_8,M_L8_1,M_L8_2,M_L8_3,M_L8_4,M_L8_5,M_L8_6,M_L8_7,M_L8_8,
-            M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_yellow,M_darkblue,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace,M_answer1,M_answer2,M_answer3,M_answer4;
+            M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_yellow,M_darkblue,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace,M_answer1,M_answer2,M_answer3,M_answer4,leave_continue,leave_finish;
     private Button again,home,ML_again,ML_home,finish,stay;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
@@ -167,6 +167,7 @@ public class Mastermind extends AppCompatActivity {
         M_L7_5.setBackground(M2);
         M_L8_5.setBackground(M2);
 
+        String Max_4_colors = getString(R.string.Max_4_colors);
         M_green.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +189,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -213,7 +214,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -238,7 +239,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -263,7 +264,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -288,7 +289,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -313,7 +314,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -338,7 +339,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -363,7 +364,7 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(Mastermind.this, Max_4_colors, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -1125,8 +1126,7 @@ public class Mastermind extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(Mastermind.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -1266,8 +1266,7 @@ public class Mastermind extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
-                Intent intent = new Intent(Mastermind.this,HomePage.class);
-                startActivity(intent);
+                finish();
             }
         });
         dialog.setCancelable(false);
@@ -1289,9 +1288,38 @@ public class Mastermind extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                dialog.dismiss();
             }
         });
         stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
+    private void dialog_leaveHint()
+    {
+        Dialog dialog = new Dialog(Mastermind.this);
+        dialog.setContentView(R.layout.leavehint);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        leave_finish = dialog.findViewById(R.id.leave_finish);
+        leave_continue = dialog.findViewById(R.id.leave_continue);
+
+        leave_finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                dialog.dismiss();
+            }
+        });
+        leave_continue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dialog.dismiss();
@@ -1331,5 +1359,10 @@ public class Mastermind extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         dialog_backPress();
+    }
+
+    @Override
+    protected void onUserLeaveHint() {
+        dialog_leaveHint();
     }
 }
