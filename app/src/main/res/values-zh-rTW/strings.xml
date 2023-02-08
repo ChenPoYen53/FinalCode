@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Final Code 2</string>
+    <string name="app_name">"FinalCode "</string>
     <string name="_4_unique_numbers_and_8_chances">4個不同數字；8次機會</string>
     <string name="_4_unique_numbers_and_10_chances">4個不同數字；10次機會</string>
     <string name="_5_unique_numbers_and_12_chances">5個不同數字；12次機會</string>
