@@ -33,8 +33,8 @@ public class Mastermind extends AppCompatActivity {
     private TextView M_L1_1,M_L1_2,M_L1_3,M_L1_4,M_L1_5,M_L1_6,M_L1_7,M_L1_8,M_L2_1,M_L2_2,M_L2_3,M_L2_4,M_L2_5,M_L2_6,M_L2_7,M_L2_8,
             M_L3_1,M_L3_2,M_L3_3,M_L3_4,M_L3_5,M_L3_6,M_L3_7,M_L3_8,M_L4_1,M_L4_2,M_L4_3,M_L4_4,M_L4_5,M_L4_6,M_L4_7,M_L4_8,M_L5_1,M_L5_2,M_L5_3,M_L5_4,M_L5_5,M_L5_6,M_L5_7,M_L5_8,
             M_L6_1,M_L6_2,M_L6_3,M_L6_4,M_L6_5,M_L6_6,M_L6_7,M_L6_8,M_L7_1,M_L7_2,M_L7_3,M_L7_4,M_L7_5,M_L7_6,M_L7_7,M_L7_8,M_L8_1,M_L8_2,M_L8_3,M_L8_4,M_L8_5,M_L8_6,M_L8_7,M_L8_8,
-            M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace,M_answer1,M_answer2,M_answer3,M_answer4;
-    private Button again,home,ML_again,ML_home;
+            M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_yellow,M_darkblue,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace,M_answer1,M_answer2,M_answer3,M_answer4;
+    private Button again,home,ML_again,ML_home,finish,stay;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     @Override
@@ -123,6 +123,8 @@ public class Mastermind extends AppCompatActivity {
         M_pink = findViewById(R.id.M_pink);
         M_red = findViewById(R.id.M_red);
         M_orange = findViewById(R.id.M_orange);
+        M_yellow = findViewById(R.id.M_yellow);
+        M_darkblue = findViewById(R.id.M_darkblue);
         ok = findViewById(R.id.M_ok);
         backspace = findViewById(R.id.M_backspace);
     }
@@ -134,6 +136,8 @@ public class Mastermind extends AppCompatActivity {
         final Drawable pink = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_pink);
         final Drawable red = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_red);
         final Drawable orange = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_orange);
+        final Drawable darkblue = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_darkblue);
+        final Drawable yellow = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_yellow);
         final Drawable result_red = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_result_red);
         final Drawable result_green = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_result_green);
         final Drawable result_x = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_result_whit);
@@ -313,6 +317,56 @@ public class Mastermind extends AppCompatActivity {
                 }
             }
         });
+        M_yellow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(M_L0_1.getBackground().equals(M))
+                {
+                    M_L0_1.setBackground(yellow);
+                }
+                else if(!M_L0_1.getBackground().equals(M) && M_L0_2.getBackground().equals(M))
+                {
+                    M_L0_2.setBackground(yellow);
+                }
+                else if(!M_L0_1.getBackground().equals(M) && !M_L0_2.getBackground().equals(M) && M_L0_3.getBackground().equals(M))
+                {
+                    M_L0_3.setBackground(yellow);
+                }
+                else if(!M_L0_1.getBackground().equals(M) && !M_L0_2.getBackground().equals(M) && !M_L0_3.getBackground().equals(M) && M_L0_4.getBackground().equals(M))
+                {
+                    M_L0_4.setBackground(yellow);
+                }
+                else
+                {
+                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        M_darkblue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(M_L0_1.getBackground().equals(M))
+                {
+                    M_L0_1.setBackground(darkblue);
+                }
+                else if(!M_L0_1.getBackground().equals(M) && M_L0_2.getBackground().equals(M))
+                {
+                    M_L0_2.setBackground(darkblue);
+                }
+                else if(!M_L0_1.getBackground().equals(M) && !M_L0_2.getBackground().equals(M) && M_L0_3.getBackground().equals(M))
+                {
+                    M_L0_3.setBackground(darkblue);
+                }
+                else if(!M_L0_1.getBackground().equals(M) && !M_L0_2.getBackground().equals(M) && !M_L0_3.getBackground().equals(M) && M_L0_4.getBackground().equals(M))
+                {
+                    M_L0_4.setBackground(darkblue);
+                }
+                else
+                {
+                    Toast.makeText(Mastermind.this, "Max 4 colors", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         backspace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -344,12 +398,16 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(2);
                     } else if (M_L0_1.getBackground().equals(purple)) {
                         resultList.add(3);
-                    } else if (M_L0_1.getBackground().equals(pink)) {
+                    } else if (M_L0_1.getBackground().equals(yellow)) {
                         resultList.add(4);
-                    } else if (M_L0_1.getBackground().equals(red)) {
+                    } else if (M_L0_1.getBackground().equals(pink)) {
                         resultList.add(5);
-                    } else if (M_L0_1.getBackground().equals(orange)) {
+                    } else if (M_L0_1.getBackground().equals(red)) {
                         resultList.add(6);
+                    } else if (M_L0_1.getBackground().equals(orange)){
+                        resultList.add(7);
+                    } else if (M_L0_1.getBackground().equals(darkblue)){
+                        resultList.add(8);
                     }
 
                     if (M_L0_2.getBackground().equals(green)) {
@@ -358,12 +416,16 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(2);
                     } else if (M_L0_2.getBackground().equals(purple)) {
                         resultList.add(3);
-                    } else if (M_L0_2.getBackground().equals(pink)) {
+                    } else if (M_L0_2.getBackground().equals(yellow)) {
                         resultList.add(4);
-                    } else if (M_L0_2.getBackground().equals(red)) {
+                    } else if (M_L0_2.getBackground().equals(pink)) {
                         resultList.add(5);
-                    } else if (M_L0_2.getBackground().equals(orange)) {
+                    } else if (M_L0_2.getBackground().equals(red)) {
                         resultList.add(6);
+                    } else if (M_L0_2.getBackground().equals(orange)){
+                        resultList.add(7);
+                    } else if (M_L0_2.getBackground().equals(darkblue)){
+                        resultList.add(8);
                     }
 
                     if (M_L0_3.getBackground().equals(green)) {
@@ -372,12 +434,16 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(2);
                     } else if (M_L0_3.getBackground().equals(purple)) {
                         resultList.add(3);
-                    } else if (M_L0_3.getBackground().equals(pink)) {
+                    } else if (M_L0_3.getBackground().equals(yellow)) {
                         resultList.add(4);
-                    } else if (M_L0_3.getBackground().equals(red)) {
+                    } else if (M_L0_3.getBackground().equals(pink)) {
                         resultList.add(5);
-                    } else if (M_L0_3.getBackground().equals(orange)) {
+                    } else if (M_L0_3.getBackground().equals(red)) {
                         resultList.add(6);
+                    } else if (M_L0_3.getBackground().equals(orange)){
+                        resultList.add(7);
+                    } else if (M_L0_3.getBackground().equals(darkblue)){
+                        resultList.add(8);
                     }
 
                     if (M_L0_4.getBackground().equals(green)) {
@@ -386,12 +452,16 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(2);
                     } else if (M_L0_4.getBackground().equals(purple)) {
                         resultList.add(3);
-                    } else if (M_L0_4.getBackground().equals(pink)) {
+                    } else if (M_L0_4.getBackground().equals(yellow)) {
                         resultList.add(4);
-                    } else if (M_L0_4.getBackground().equals(red)) {
+                    } else if (M_L0_4.getBackground().equals(pink)) {
                         resultList.add(5);
-                    } else if (M_L0_4.getBackground().equals(orange)) {
+                    } else if (M_L0_4.getBackground().equals(red)) {
                         resultList.add(6);
+                    } else if (M_L0_4.getBackground().equals(orange)){
+                        resultList.add(7);
+                    } else if (M_L0_4.getBackground().equals(darkblue)){
+                        resultList.add(8);
                     }
 
                     Log.d(TAG, "resultList..." + resultList.get(0) + resultList.get(1) + resultList.get(2) + resultList.get(3));
@@ -411,7 +481,6 @@ public class Mastermind extends AppCompatActivity {
                             int a = game.getA();
                             int b = game.getB();
                             boolean win = game.isWin();
-
                             resultList.clear();
                             if (M_L1_1.getBackground().equals(M)) {
                                 M_L1_1.setBackground(M_L0_1.getBackground());
@@ -1205,6 +1274,33 @@ public class Mastermind extends AppCompatActivity {
         dialog.getWindow().setLayout(width,height);
         dialog.show();
     }
+    private void dialog_backPress()
+    {
+        Dialog dialog = new Dialog(Mastermind.this);
+        dialog.setContentView(R.layout.back_pressed);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        finish = dialog.findViewById(R.id.finish);
+        stay = dialog.findViewById(R.id.stay);
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
     //Menu Resources
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -1227,8 +1323,13 @@ public class Mastermind extends AppCompatActivity {
 
     private void randomNumber()
     {
-        randomNumList = Game.list(6,4);
+        randomNumList = Game.list(8,4);
 
         Log.d(TAG,"arr....."+randomNumList.get(0)+randomNumList.get(1)+randomNumList.get(2)+randomNumList.get(3));
+    }
+
+    @Override
+    public void onBackPressed() {
+        dialog_backPress();
     }
 }

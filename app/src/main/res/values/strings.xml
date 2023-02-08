@@ -38,4 +38,7 @@
     <string name="please_insert_4_colors">Please Insert 4 Colors</string>
     <string name="cannot_input_same_numbers">Can Not Input Same Numbers</string>
     <string name="cannot_input_same_colors">Can Not Input Same Colors</string>
+    <string name="are_you_sure">Are you sure ?!</string>
+    <string name="finish">Finish</string>
+    <string name="stay">stay</string>
 </resources>

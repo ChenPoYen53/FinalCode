@@ -27,7 +27,7 @@ public class game2 extends AppCompatActivity {
             G2_L1_1,G2_L1_2,G2_L1_3,G2_L1_4,G2_L1_A,G2_L1_B,G2_L2_1,G2_L2_2,G2_L2_3,G2_L2_4,G2_L2_A,G2_L2_B,G2_L3_1,G2_L3_2,G2_L3_3,G2_L3_4,G2_L3_A,G2_L3_B,G2_L4_1,G2_L4_2,G2_L4_3,G2_L4_4,G2_L4_A,G2_L4_B,
             G2_L5_1,G2_L5_2,G2_L5_3,G2_L5_4,G2_L5_A,G2_L5_B,G2_L6_1,G2_L6_2,G2_L6_3,G2_L6_4,G2_L6_A,G2_L6_B,G2_L7_1,G2_L7_2,G2_L7_3,G2_L7_4,G2_L7_A,G2_L7_B,G2_L8_1,G2_L8_2,G2_L8_3,G2_L8_4,G2_L8_A,G2_L8_B,
             G2_L9_1,G2_L9_2,G2_L9_3,G2_L9_4,G2_L9_A,G2_L9_B,G2_L10_1,G2_L10_2,G2_L10_3,G2_L10_4,G2_L10_A,G2_L10_B,answer;
-    private Button again,home,L_again,L_home;
+    private Button again,home,L_again,L_home,finish,stay;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     @Override
@@ -622,6 +622,33 @@ public class game2 extends AppCompatActivity {
         dialog.getWindow().setLayout(width,height);
         dialog.show();
     }
+    private void dialog_backPress()
+    {
+        Dialog dialog = new Dialog(game2.this);
+        dialog.setContentView(R.layout.back_pressed);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        finish = dialog.findViewById(R.id.finish);
+        stay = dialog.findViewById(R.id.stay);
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
     //Menu Resources
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -640,5 +667,10 @@ public class game2 extends AppCompatActivity {
             onBackPressed();
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        dialog_backPress();
     }
 }

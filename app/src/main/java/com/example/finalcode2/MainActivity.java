@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView _1,_2,_3,_4,_5,_6,_7,_8,_9,_0,C,OK,txv1,txv2,txv3,txv4,
             L1_1,L1_2,L1_3,L1_4,L1_A,L1_B,L2_1,L2_2,L2_3,L2_4,L2_A,L2_B,L3_1,L3_2,L3_3,L3_4,L3_A,L3_B,L4_1,L4_2,L4_3,L4_4,L4_A,L4_B,
             L5_1,L5_2,L5_3,L5_4,L5_A,L5_B,L6_1,L6_2,L6_3,L6_4,L6_A,L6_B,L7_1,L7_2,L7_3,L7_4,L7_A,L7_B,L8_1,L8_2,L8_3,L8_4,L8_A,L8_B,answer;
-    private Button again,home,L_again,L_home;
+    private Button again,home,L_again,L_home,finish,stay;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     @Override
@@ -589,6 +589,33 @@ public class MainActivity extends AppCompatActivity {
         dialog.getWindow().setLayout(width,height);
         dialog.show();
     }
+    private void dialog_backPress()
+    {
+        Dialog dialog = new Dialog(MainActivity.this);
+        dialog.setContentView(R.layout.back_pressed);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        finish = dialog.findViewById(R.id.finish);
+        stay = dialog.findViewById(R.id.stay);
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -608,5 +635,10 @@ public class MainActivity extends AppCompatActivity {
             onBackPressed();
         }
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        dialog_backPress();
     }
 }

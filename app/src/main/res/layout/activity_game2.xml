@@ -11,7 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
+        android:layout_weight="3.3"
         android:orientation="horizontal"
         android:backgroundTint="@null"
         android:background="@drawable/text_item"
@@ -61,12 +61,15 @@
             android:gravity="center"
             android:textColor="@color/black"/>
     </LinearLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:layout_marginTop="3dp"
-        android:layout_marginBottom="3dp"
+        android:layout_marginBottom="3dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
@@ -760,16 +763,17 @@
                 android:textColor="@color/black"/>
         </LinearLayout>
     </LinearLayout>
+    </ScrollView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="55dp"
         android:orientation="horizontal"
-        android:layout_weight="4"
-        android:layout_marginTop="5dp">
+        android:layout_gravity="center"
+        android:gravity="center">
         <TextView
             android:id="@+id/G2_1"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_1"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -777,14 +781,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp" />
         <TextView
             android:id="@+id/G2_2"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_2"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -792,14 +795,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_3"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -807,14 +809,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_4"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_4"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -822,14 +823,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_5"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -837,16 +837,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
-
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_C"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/button_c"
             android:text="@string/c"
             android:textAlignment="center"
@@ -855,18 +852,19 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:layout_margin="5dp"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="55dp"
         android:orientation="horizontal"
-        android:layout_weight="4"
-        android:layout_marginTop="5dp">
+        android:layout_gravity="center"
+        android:gravity="center">
         <TextView
             android:id="@+id/G2_6"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_6"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -874,14 +872,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_7"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_7"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -889,14 +886,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_8"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_8"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -904,14 +900,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_9"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_9"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -919,14 +914,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_0"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:text="@string/_0"
             android:textStyle="bold"
             android:textColor="@color/white"
@@ -934,16 +928,13 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:textSize="25sp"
-            android:layout_weight="1"
             app:backgroundTint="@null"
             android:background="@drawable/button_number"
-            android:layout_marginEnd="5dp"/>
-
+            android:layout_margin="5dp"/>
         <TextView
             android:id="@+id/G2_OK"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:background="@drawable/button_ok"
             android:text="@string/ok"
             android:textAlignment="center"
@@ -952,6 +943,7 @@
             android:textColor="@color/white"
             android:textSize="25sp"
             android:textStyle="bold"
-            app:backgroundTint="@null" />
+            app:backgroundTint="@null"
+            android:layout_margin="5dp"/>
     </LinearLayout>
 </LinearLayout>

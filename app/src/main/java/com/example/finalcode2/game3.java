@@ -30,7 +30,7 @@ public class game3 extends AppCompatActivity {
             G3_L1_1,G3_L1_2,G3_L1_3,G3_L1_4,G3_L1_5,G3_L1_A,G3_L1_B,G3_L2_1,G3_L2_2,G3_L2_3,G3_L2_4,G3_L2_5,G3_L2_A,G3_L2_B,G3_L3_1,G3_L3_2,G3_L3_3,G3_L3_4,G3_L3_5,G3_L3_A,G3_L3_B,G3_L4_1,G3_L4_2,G3_L4_3,G3_L4_4,G3_L4_5,G3_L4_A,G3_L4_B,
             G3_L5_1,G3_L5_2,G3_L5_3,G3_L5_4,G3_L5_5,G3_L5_A,G3_L5_B,G3_L6_1,G3_L6_2,G3_L6_3,G3_L6_4,G3_L6_5,G3_L6_A,G3_L6_B,G3_L7_1,G3_L7_2,G3_L7_3,G3_L7_4,G3_L7_5,G3_L7_A,G3_L7_B,G3_L8_1,G3_L8_2,G3_L8_3,G3_L8_4,G3_L8_5,G3_L8_A,G3_L8_B,
             G3_L9_1,G3_L9_2,G3_L9_3,G3_L9_4,G3_L9_5,G3_L9_A,G3_L9_B,G3_L10_1,G3_L10_2,G3_L10_3,G3_L10_4,G3_L10_5,G3_L10_A,G3_L10_B,G3_L11_1,G3_L11_2,G3_L11_3,G3_L11_4,G3_L11_5,G3_L11_A,G3_L11_B,G3_L12_1,G3_L12_2,G3_L12_3,G3_L12_4,G3_L12_5,G3_L12_A,G3_L12_B,answer;
-    private Button again,home,L_again,L_home;
+    private Button again,home,L_again,L_home,finish,stay;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     private Game game ;
@@ -729,6 +729,33 @@ public class game3 extends AppCompatActivity {
                 dialog.dismiss();
                 Intent intent = new Intent(game3.this,HomePage.class);
                 startActivity(intent);
+            }
+        });
+        dialog.setCancelable(false);
+        dialog.getWindow().setLayout(width,height);
+        dialog.show();
+    }
+    private void dialog_backPress()
+    {
+        Dialog dialog = new Dialog(game3.this);
+        dialog.setContentView(R.layout.back_pressed);
+
+        int width = WindowManager.LayoutParams.MATCH_PARENT;
+        int height = WindowManager.LayoutParams.WRAP_CONTENT;
+
+        finish = dialog.findViewById(R.id.finish);
+        stay = dialog.findViewById(R.id.stay);
+
+        finish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+        stay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
             }
         });
         dialog.setCancelable(false);

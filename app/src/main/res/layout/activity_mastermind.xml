@@ -640,6 +640,13 @@
             app:backgroundTint="@null"
             android:background="@drawable/mastermind_purple"/>
         <TextView
+            android:id="@+id/M_yellow"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/mastermind_yellow"/>
+        <TextView
             android:id="@+id/M_backspace"
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -673,6 +680,13 @@
             android:layout_marginStart="20dp"
             app:backgroundTint="@null"
             android:background="@drawable/mastermind_orange"/>
+        <TextView
+            android:id="@+id/M_darkblue"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="20dp"
+            app:backgroundTint="@null"
+            android:background="@drawable/mastermind_darkblue"/>
         <TextView
             android:id="@+id/M_ok"
             android:layout_width="50dp"
