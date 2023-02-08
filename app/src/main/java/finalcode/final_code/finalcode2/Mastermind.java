@@ -1,10 +1,9 @@
-package com.example.finalcode2;
+package finalcode.final_code.finalcode2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
 import androidx.core.content.res.ResourcesCompat;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -19,7 +18,6 @@ import android.widget.Button;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;

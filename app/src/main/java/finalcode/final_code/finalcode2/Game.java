@@ -1,4 +1,4 @@
-package com.example.finalcode2;
+package finalcode.final_code.finalcode2;
 
 import java.util.ArrayList;
 import java.util.List;

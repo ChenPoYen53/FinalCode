@@ -1,4 +1,4 @@
-package com.example.finalcode2;
+package finalcode.final_code.finalcode2;
 
 import android.content.Context;
 

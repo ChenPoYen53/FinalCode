@@ -1,8 +1,7 @@
-package com.example.finalcode2;
+package finalcode.final_code.finalcode2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
