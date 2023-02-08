@@ -33,4 +33,9 @@
     <string name="explanation4">You need to guess 4 colors in 8 times!\n\n1 Green - Means your guess includes one correct colors in the correct position.\n\n1 Red - Means your guess includes one correct colors, not in the correct position.\n\n1 Green 2 Red - Means your guess includes one correct color in the correct position and two correct colors, not in the correct position.\n\n*Not allow same colors!</string>
     <string name="back">back</string>
     <string name="mastermind">Mastermind</string>
+    <string name="please_insert_5_numbers">Please Insert 5 Numbers</string>
+    <string name="please_insert_4_numbers">Please Insert 4 Numbers</string>
+    <string name="please_insert_4_colors">Please Insert 4 Colors</string>
+    <string name="cannot_input_same_numbers">Can Not Input Same Numbers</string>
+    <string name="cannot_input_same_colors">Can Not Input Same Colors</string>
 </resources>

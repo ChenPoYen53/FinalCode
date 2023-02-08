@@ -29,7 +29,7 @@ public class game2 extends AppCompatActivity {
             G2_L9_1,G2_L9_2,G2_L9_3,G2_L9_4,G2_L9_A,G2_L9_B,G2_L10_1,G2_L10_2,G2_L10_3,G2_L10_4,G2_L10_A,G2_L10_B,answer;
     private Button again,home,L_again,L_home;
     private final List<Integer> resultList = new ArrayList<>();
-    private final List<Integer> randomNumList = new ArrayList<>();
+    private List<Integer> randomNumList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,12 +40,7 @@ public class game2 extends AppCompatActivity {
         findId();
         NumberButton();
         randomNumber();
-        G2_OK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                okButton();
-            }
-        });
+        G2_OK.setOnClickListener(v -> okButton());
     }
     private void findId()
     {
@@ -406,31 +401,9 @@ public class game2 extends AppCompatActivity {
     }
     private void randomNumber()
     {
-        int[] num = new int[9];
+        randomNumList = Game.list(9,4);
 
-        for(int i = 0 ; i<num.length ; i++)
-        {
-            num[i] = i + 1;
-        }
-
-        int[] arr = new int[4];
-        int n;
-
-        for(int i=0 ; i< arr.length ; i++)
-        {
-            n = (int) (Math.random()*(9-i));
-            arr[i] = num[n];
-            for(int j = n; j < num.length-1 ; j++)
-            {
-                num[j] = num[j+1];
-            }
-        }
-        randomNumList.add(arr[0]);
-        randomNumList.add(arr[1]);
-        randomNumList.add(arr[2]);
-        randomNumList.add(arr[3]);
-
-        Log.d(TAG,"arr....."+arr[0]+arr[1]+arr[2]+arr[3]);
+        Log.d(TAG,"arr....."+randomNumList.get(0)+randomNumList.get(1)+randomNumList.get(2)+randomNumList.get(3));
     }
     private void okButton()
     {
@@ -441,7 +414,8 @@ public class game2 extends AppCompatActivity {
             int Num4 = Integer.parseInt(G2_txv4.getText().toString());
 
             if (Num1 == Num2 || Num1 == Num3 || Num1 == Num4 || Num2 == Num3 || Num2 == Num4 || Num3 == Num4) {
-                Toast.makeText(this, "can not input same number", Toast.LENGTH_SHORT).show();
+                String toast = getResources().getString(R.string.cannot_input_same_numbers);
+                Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
             } else {
                 resultList.add(Num1);
                 resultList.add(Num2);
@@ -449,32 +423,22 @@ public class game2 extends AppCompatActivity {
                 resultList.add(Num4);
 
                 if (randomNumList.size() > 0) {
-                    boolean win = false;
 
-                    int a = 0, b = 0;
+                    Game game = new Game(randomNumList,resultList);
+                    int a = game.getA();
+                    int b = game.getB();
+                    boolean win = game.isWin();
 
-                    for (int i = 0; i < 4; i++) {
-                        if (resultList.get(i) == randomNumList.get(i)) {
-                            a++;
-                        } else {
-                            for (int j = 0; j < 4; j++) {
-                                if (resultList.get(i) == randomNumList.get(j)) {
-                                    b++;
-                                }
-                            }
-                        }
-                    }
-                    if (a == 4) {
-                        win = true;
-                    }
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(game2.this);
+                    String A = String.valueOf(a) + "A";
+                    String B = String.valueOf(b) + "B";
+
                     if (G2_L1_1.getText().equals("")) {
                         G2_L1_1.setText(String.valueOf(Num1));
                         G2_L1_2.setText(String.valueOf(Num2));
                         G2_L1_3.setText(String.valueOf(Num3));
                         G2_L1_4.setText(String.valueOf(Num4));
-                        G2_L1_A.setText(String.valueOf(a) + "A");
-                        G2_L1_B.setText(String.valueOf(b) + "B");
+                        G2_L1_A.setText(A);
+                        G2_L1_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -484,8 +448,8 @@ public class game2 extends AppCompatActivity {
                         G2_L2_2.setText(String.valueOf(Num2));
                         G2_L2_3.setText(String.valueOf(Num3));
                         G2_L2_4.setText(String.valueOf(Num4));
-                        G2_L2_A.setText(String.valueOf(a) + "A");
-                        G2_L2_B.setText(String.valueOf(b) + "B");
+                        G2_L2_A.setText(A);
+                        G2_L2_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -495,8 +459,8 @@ public class game2 extends AppCompatActivity {
                         G2_L3_2.setText(String.valueOf(Num2));
                         G2_L3_3.setText(String.valueOf(Num3));
                         G2_L3_4.setText(String.valueOf(Num4));
-                        G2_L3_A.setText(String.valueOf(a) + "A");
-                        G2_L3_B.setText(String.valueOf(b) + "B");
+                        G2_L3_A.setText(A);
+                        G2_L3_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -506,8 +470,8 @@ public class game2 extends AppCompatActivity {
                         G2_L4_2.setText(String.valueOf(Num2));
                         G2_L4_3.setText(String.valueOf(Num3));
                         G2_L4_4.setText(String.valueOf(Num4));
-                        G2_L4_A.setText(String.valueOf(a) + "A");
-                        G2_L4_B.setText(String.valueOf(b) + "B");
+                        G2_L4_A.setText(A);
+                        G2_L4_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -517,8 +481,8 @@ public class game2 extends AppCompatActivity {
                         G2_L5_2.setText(String.valueOf(Num2));
                         G2_L5_3.setText(String.valueOf(Num3));
                         G2_L5_4.setText(String.valueOf(Num4));
-                        G2_L5_A.setText(String.valueOf(a) + "A");
-                        G2_L5_B.setText(String.valueOf(b) + "B");
+                        G2_L5_A.setText(A);
+                        G2_L5_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -528,8 +492,8 @@ public class game2 extends AppCompatActivity {
                         G2_L6_2.setText(String.valueOf(Num2));
                         G2_L6_3.setText(String.valueOf(Num3));
                         G2_L6_4.setText(String.valueOf(Num4));
-                        G2_L6_A.setText(String.valueOf(a) + "A");
-                        G2_L6_B.setText(String.valueOf(b) + "B");
+                        G2_L6_A.setText(A);
+                        G2_L6_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -539,8 +503,8 @@ public class game2 extends AppCompatActivity {
                         G2_L7_2.setText(String.valueOf(Num2));
                         G2_L7_3.setText(String.valueOf(Num3));
                         G2_L7_4.setText(String.valueOf(Num4));
-                        G2_L7_A.setText(String.valueOf(a) + "A");
-                        G2_L7_B.setText(String.valueOf(b) + "B");
+                        G2_L7_A.setText(A);
+                        G2_L7_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -550,8 +514,8 @@ public class game2 extends AppCompatActivity {
                         G2_L8_2.setText(String.valueOf(Num2));
                         G2_L8_3.setText(String.valueOf(Num3));
                         G2_L8_4.setText(String.valueOf(Num4));
-                        G2_L8_A.setText(String.valueOf(a) + "A");
-                        G2_L8_B.setText(String.valueOf(b) + "B");
+                        G2_L8_A.setText(A);
+                        G2_L8_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -561,8 +525,8 @@ public class game2 extends AppCompatActivity {
                         G2_L9_2.setText(String.valueOf(Num2));
                         G2_L9_3.setText(String.valueOf(Num3));
                         G2_L9_4.setText(String.valueOf(Num4));
-                        G2_L9_A.setText(String.valueOf(a) + "A");
-                        G2_L9_B.setText(String.valueOf(b) + "B");
+                        G2_L9_A.setText(A);
+                        G2_L9_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -572,8 +536,8 @@ public class game2 extends AppCompatActivity {
                         G2_L10_2.setText(String.valueOf(Num2));
                         G2_L10_3.setText(String.valueOf(Num3));
                         G2_L10_4.setText(String.valueOf(Num4));
-                        G2_L10_A.setText(String.valueOf(a) + "A");
-                        G2_L10_B.setText(String.valueOf(b) + "B");
+                        G2_L10_A.setText(A);
+                        G2_L10_B.setText(B);
                         if (win) {
                             dialog();
                         } else {
@@ -590,7 +554,8 @@ public class game2 extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "please insert 4 numbers", Toast.LENGTH_SHORT).show();
+            String toast = getResources().getString(R.string.please_insert_4_numbers);
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
     }
     private void dialog()

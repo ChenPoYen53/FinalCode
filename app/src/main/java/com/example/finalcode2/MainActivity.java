@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             L1_1,L1_2,L1_3,L1_4,L1_A,L1_B,L2_1,L2_2,L2_3,L2_4,L2_A,L2_B,L3_1,L3_2,L3_3,L3_4,L3_A,L3_B,L4_1,L4_2,L4_3,L4_4,L4_A,L4_B,
             L5_1,L5_2,L5_3,L5_4,L5_A,L5_B,L6_1,L6_2,L6_3,L6_4,L6_A,L6_B,L7_1,L7_2,L7_3,L7_4,L7_A,L7_B,L8_1,L8_2,L8_3,L8_4,L8_A,L8_B,answer;
     private Button again,home,L_again,L_home;
-    private List<Integer> resultList = new ArrayList<>();
+    private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +40,7 @@ public class MainActivity extends AppCompatActivity {
         FindId();
         NumberButton();
         randomNumber();
-        OK.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                okButton();
-            }
-        });
+        OK.setOnClickListener(v -> okButton());
     }
     private void FindId()
     {
@@ -394,31 +389,9 @@ public class MainActivity extends AppCompatActivity {
     }
     private void randomNumber()
     {
-        int[] num = new int[9];
+        randomNumList = Game.list(9,4);
 
-        for(int i = 0 ; i<num.length ; i++)
-        {
-            num[i] = i + 1;
-        }
-
-        int[] arr = new int[4];
-        int n;
-
-        for(int i=0 ; i< arr.length ; i++)
-        {
-            n = (int) (Math.random()*(9-i));
-            arr[i] = num[n];
-            for(int j = n; j < num.length-1 ; j++)
-            {
-                num[j] = num[j+1];
-            }
-        }
-        randomNumList.add(arr[0]);
-        randomNumList.add(arr[1]);
-        randomNumList.add(arr[2]);
-        randomNumList.add(arr[3]);
-
-        Log.d(TAG,"arr....."+arr[0]+arr[1]+arr[2]+arr[3]);
+        Log.d(TAG,"arr....."+randomNumList.get(0)+randomNumList.get(1)+randomNumList.get(2)+randomNumList.get(3));
     }
     private void okButton()
     {
@@ -429,7 +402,8 @@ public class MainActivity extends AppCompatActivity {
             int Num4 = Integer.parseInt(txv4.getText().toString());
 
             if (Num1 == Num2 || Num1 == Num3 || Num1 == Num4 || Num2 == Num3 || Num2 == Num4 || Num3 == Num4) {
-                Toast.makeText(this, "can not input same number", Toast.LENGTH_SHORT).show();
+                String toast = getResources().getString(R.string.cannot_input_same_numbers);
+                Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
             } else {
                 resultList.add(Num1);
                 resultList.add(Num2);
@@ -437,31 +411,22 @@ public class MainActivity extends AppCompatActivity {
                 resultList.add(Num4);
 
                 if (randomNumList.size() > 0) {
-                    boolean win = false;
 
-                    int a = 0, b = 0;
+                    Game game = new Game(randomNumList,resultList);
+                    int a = game.getA();
+                    int b = game.getB();
+                    boolean win = game.isWin();
 
-                    for (int i = 0; i < 4; i++) {
-                        if (resultList.get(i) == randomNumList.get(i)) {
-                            a++;
-                        } else {
-                            for (int j = 0; j < 4; j++) {
-                                if (resultList.get(i) == randomNumList.get(j)) {
-                                    b++;
-                                }
-                            }
-                        }
-                    }
-                    if (a == 4) {
-                        win = true;
-                    }
+                    String A = String.valueOf(a) + "A";
+                    String B = String.valueOf(b) + "B";
+
                     if (L1_1.getText().equals("")) {
                         L1_1.setText(String.valueOf(Num1));
                         L1_2.setText(String.valueOf(Num2));
                         L1_3.setText(String.valueOf(Num3));
                         L1_4.setText(String.valueOf(Num4));
-                        L1_A.setText(String.valueOf(a) + "A");
-                        L1_B.setText(String.valueOf(b) + "B");
+                        L1_A.setText(A);
+                        L1_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -471,8 +436,8 @@ public class MainActivity extends AppCompatActivity {
                         L2_2.setText(String.valueOf(Num2));
                         L2_3.setText(String.valueOf(Num3));
                         L2_4.setText(String.valueOf(Num4));
-                        L2_A.setText(String.valueOf(a) + "A");
-                        L2_B.setText(String.valueOf(b) + "B");
+                        L2_A.setText(A);
+                        L2_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -482,8 +447,8 @@ public class MainActivity extends AppCompatActivity {
                         L3_2.setText(String.valueOf(Num2));
                         L3_3.setText(String.valueOf(Num3));
                         L3_4.setText(String.valueOf(Num4));
-                        L3_A.setText(String.valueOf(a) + "A");
-                        L3_B.setText(String.valueOf(b) + "B");
+                        L3_A.setText(A);
+                        L3_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -493,8 +458,8 @@ public class MainActivity extends AppCompatActivity {
                         L4_2.setText(String.valueOf(Num2));
                         L4_3.setText(String.valueOf(Num3));
                         L4_4.setText(String.valueOf(Num4));
-                        L4_A.setText(String.valueOf(a) + "A");
-                        L4_B.setText(String.valueOf(b) + "B");
+                        L4_A.setText(A);
+                        L4_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -504,8 +469,8 @@ public class MainActivity extends AppCompatActivity {
                         L5_2.setText(String.valueOf(Num2));
                         L5_3.setText(String.valueOf(Num3));
                         L5_4.setText(String.valueOf(Num4));
-                        L5_A.setText(String.valueOf(a) + "A");
-                        L5_B.setText(String.valueOf(b) + "B");
+                        L5_A.setText(A);
+                        L5_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -515,8 +480,8 @@ public class MainActivity extends AppCompatActivity {
                         L6_2.setText(String.valueOf(Num2));
                         L6_3.setText(String.valueOf(Num3));
                         L6_4.setText(String.valueOf(Num4));
-                        L6_A.setText(String.valueOf(a) + "A");
-                        L6_B.setText(String.valueOf(b) + "B");
+                        L6_A.setText(A);
+                        L6_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -526,8 +491,8 @@ public class MainActivity extends AppCompatActivity {
                         L7_2.setText(String.valueOf(Num2));
                         L7_3.setText(String.valueOf(Num3));
                         L7_4.setText(String.valueOf(Num4));
-                        L7_A.setText(String.valueOf(a) + "A");
-                        L7_B.setText(String.valueOf(b) + "B");
+                        L7_A.setText(A);
+                        L7_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -537,8 +502,8 @@ public class MainActivity extends AppCompatActivity {
                         L8_2.setText(String.valueOf(Num2));
                         L8_3.setText(String.valueOf(Num3));
                         L8_4.setText(String.valueOf(Num4));
-                        L8_A.setText(String.valueOf(a) + "A");
-                        L8_B.setText(String.valueOf(b) + "B");
+                        L8_A.setText(A);
+                        L8_B.setText(B);
                         if (win) {
                             dialog();
                         } else {
@@ -555,7 +520,8 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "please insert 4 numbers", Toast.LENGTH_SHORT).show();
+            String toast = getResources().getString(R.string.please_insert_4_numbers);
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
     }
     private void dialog()

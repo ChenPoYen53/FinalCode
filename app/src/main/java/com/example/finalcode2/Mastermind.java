@@ -36,7 +36,7 @@ public class Mastermind extends AppCompatActivity {
             M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace,M_answer1,M_answer2,M_answer3,M_answer4;
     private Button again,home,ML_again,ML_home;
     private final List<Integer> resultList = new ArrayList<>();
-    private final List<Integer> randomNumList = new ArrayList<>();
+    private List<Integer> randomNumList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -162,6 +162,7 @@ public class Mastermind extends AppCompatActivity {
         M_L6_5.setBackground(M2);
         M_L7_5.setBackground(M2);
         M_L8_5.setBackground(M2);
+
         M_green.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -393,7 +394,7 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(6);
                     }
 
-                    Log.d(TAG, "randomNumList..." + resultList.get(0) + resultList.get(1) + resultList.get(2) + resultList.get(3));
+                    Log.d(TAG, "resultList..." + resultList.get(0) + resultList.get(1) + resultList.get(2) + resultList.get(3));
 
                     int Num1 = resultList.get(0);
                     int Num2 = resultList.get(1);
@@ -401,29 +402,15 @@ public class Mastermind extends AppCompatActivity {
                     int Num4 = resultList.get(3);
 
                     if (Num1 == Num2 || Num1 == Num3 || Num1 == Num4 || Num2 == Num3 || Num2 == Num4 || Num3 == Num4) {
-                        Toast.makeText(Mastermind.this, "Can not input same color", Toast.LENGTH_SHORT).show();
+                        String toast = getResources().getString(R.string.cannot_input_same_colors);
+                        Toast.makeText(Mastermind.this, toast, Toast.LENGTH_SHORT).show();
                         resultList.clear();
                     } else {
                         if (randomNumList.size() > 0) {
-                            boolean win = false;
-
-                            int a = 0, b = 0;
-
-                            for (int i = 0; i < 4; i++) {
-                                if (resultList.get(i) == randomNumList.get(i)) {
-                                    a++;
-                                } else {
-                                    for (int j = 0; j < 4; j++) {
-                                        if (resultList.get(i) == randomNumList.get(j)) {
-                                            b++;
-                                        }
-                                    }
-                                }
-                            }
-                            if (a == 4) {
-                                win = true;
-                            }
-                            Log.d(TAG, "a...b..." + a + "..." + b + "...");
+                            Game game = new Game(randomNumList,resultList);
+                            int a = game.getA();
+                            int b = game.getB();
+                            boolean win = game.isWin();
 
                             resultList.clear();
                             if (M_L1_1.getBackground().equals(M)) {
@@ -1041,7 +1028,8 @@ public class Mastermind extends AppCompatActivity {
                 }
                 else
                 {
-                    Toast.makeText(Mastermind.this, "Please Input 4 colors", Toast.LENGTH_SHORT).show();
+                    String toast = getResources().getString(R.string.please_insert_4_colors);
+                    Toast.makeText(Mastermind.this, toast, Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -1239,30 +1227,8 @@ public class Mastermind extends AppCompatActivity {
 
     private void randomNumber()
     {
-        int[] num = new int[6];
+        randomNumList = Game.list(6,4);
 
-        for(int i = 0 ; i<num.length ; i++)
-        {
-            num[i] = i + 1;
-        }
-
-        int[] arr = new int[4];
-        int n;
-
-        for(int i=0 ; i< arr.length ; i++)
-        {
-            n = (int) (Math.random()*(6-i));
-            arr[i] = num[n];
-            for(int j = n; j < num.length-1 ; j++)
-            {
-                num[j] = num[j+1];
-            }
-        }
-        randomNumList.add(arr[0]);
-        randomNumList.add(arr[1]);
-        randomNumList.add(arr[2]);
-        randomNumList.add(arr[3]);
-
-        Log.d(TAG,"arr....."+arr[0]+arr[1]+arr[2]+arr[3]);
+        Log.d(TAG,"arr....."+randomNumList.get(0)+randomNumList.get(1)+randomNumList.get(2)+randomNumList.get(3));
     }
 }

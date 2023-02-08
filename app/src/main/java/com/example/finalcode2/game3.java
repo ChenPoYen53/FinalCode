@@ -7,7 +7,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.VibrationAttributes;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +32,8 @@ public class game3 extends AppCompatActivity {
             G3_L9_1,G3_L9_2,G3_L9_3,G3_L9_4,G3_L9_5,G3_L9_A,G3_L9_B,G3_L10_1,G3_L10_2,G3_L10_3,G3_L10_4,G3_L10_5,G3_L10_A,G3_L10_B,G3_L11_1,G3_L11_2,G3_L11_3,G3_L11_4,G3_L11_5,G3_L11_A,G3_L11_B,G3_L12_1,G3_L12_2,G3_L12_3,G3_L12_4,G3_L12_5,G3_L12_A,G3_L12_B,answer;
     private Button again,home,L_again,L_home;
     private final List<Integer> resultList = new ArrayList<>();
-    private final List<Integer> randomNumList = new ArrayList<>();
+    private List<Integer> randomNumList = new ArrayList<>();
+    private Game game ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -475,32 +479,9 @@ public class game3 extends AppCompatActivity {
     }
     private void randomNumber()
     {
-        int[] num = new int[9];
+        randomNumList = Game.list(9,5);
 
-        for(int i = 0 ; i<num.length ; i++)
-        {
-            num[i] = i + 1;
-        }
-
-        int[] arr = new int[5];
-        int n;
-
-        for(int i=0 ; i< arr.length ; i++)
-        {
-            n = (int) (Math.random()*(9-i));
-            arr[i] = num[n];
-            for(int j = n; j < num.length-1 ; j++)
-            {
-                num[j] = num[j+1];
-            }
-        }
-        randomNumList.add(arr[0]);
-        randomNumList.add(arr[1]);
-        randomNumList.add(arr[2]);
-        randomNumList.add(arr[3]);
-        randomNumList.add(arr[4]);
-
-        Log.d(TAG,"arr....."+arr[0]+arr[1]+arr[2]+arr[3]+arr[4]);
+        Log.d(TAG,"arr....."+randomNumList.get(0)+randomNumList.get(1)+randomNumList.get(2)+randomNumList.get(3)+randomNumList.get(4));
     }
     private void okButton()
     {
@@ -512,42 +493,31 @@ public class game3 extends AppCompatActivity {
             int Num5 = Integer.parseInt(G3_txv5.getText().toString());
 
             if (Num1 == Num2 || Num1 == Num3 || Num1 == Num4 || Num1 == Num5 || Num2 == Num3 || Num2 == Num4 || Num2 == Num5 || Num3 == Num4 || Num3 == Num5 || Num4 == Num5) {
-                Toast.makeText(this, "can not input same number", Toast.LENGTH_SHORT).show();
+                String toast = getResources().getString(R.string.cannot_input_same_numbers);
+                Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
             } else {
                 resultList.add(Num1);
                 resultList.add(Num2);
                 resultList.add(Num3);
                 resultList.add(Num4);
                 resultList.add(Num5);
-
                 if (randomNumList.size() > 0) {
-                    boolean win = false;
+                    game = new Game(randomNumList,resultList);
+                    int a = game.getA();
+                    int b = game.getB();
+                    boolean win = game.isWin();
 
-                    int a = 0, b = 0;
+                    String A = String.valueOf(a) + "A";
+                    String B = String.valueOf(b) + "B";
 
-                    for (int i = 0; i < 5; i++) {
-                        if (resultList.get(i) == randomNumList.get(i)) {
-                            a++;
-                        } else {
-                            for (int j = 0; j < 5; j++) {
-                                if (resultList.get(i) == randomNumList.get(j)) {
-                                    b++;
-                                }
-                            }
-                        }
-                    }
-                    if (a == 5) {
-                        win = true;
-                    }
-                    AlertDialog.Builder dialog = new AlertDialog.Builder(game3.this);
                     if (G3_L1_1.getText().equals("")) {
                         G3_L1_1.setText(String.valueOf(Num1));
                         G3_L1_2.setText(String.valueOf(Num2));
                         G3_L1_3.setText(String.valueOf(Num3));
                         G3_L1_4.setText(String.valueOf(Num4));
                         G3_L1_5.setText(String.valueOf(Num5));
-                        G3_L1_A.setText(String.valueOf(a) + "A");
-                        G3_L1_B.setText(String.valueOf(b) + "B");
+                        G3_L1_A.setText(A);
+                        G3_L1_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -558,8 +528,8 @@ public class game3 extends AppCompatActivity {
                         G3_L2_3.setText(String.valueOf(Num3));
                         G3_L2_4.setText(String.valueOf(Num4));
                         G3_L2_5.setText(String.valueOf(Num5));
-                        G3_L2_A.setText(String.valueOf(a) + "A");
-                        G3_L2_B.setText(String.valueOf(b) + "B");
+                        G3_L2_A.setText(A);
+                        G3_L2_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -570,8 +540,8 @@ public class game3 extends AppCompatActivity {
                         G3_L3_3.setText(String.valueOf(Num3));
                         G3_L3_4.setText(String.valueOf(Num4));
                         G3_L3_5.setText(String.valueOf(Num5));
-                        G3_L3_A.setText(String.valueOf(a) + "A");
-                        G3_L3_B.setText(String.valueOf(b) + "B");
+                        G3_L3_A.setText(A);
+                        G3_L3_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -582,8 +552,8 @@ public class game3 extends AppCompatActivity {
                         G3_L4_3.setText(String.valueOf(Num3));
                         G3_L4_4.setText(String.valueOf(Num4));
                         G3_L4_5.setText(String.valueOf(Num5));
-                        G3_L4_A.setText(String.valueOf(a) + "A");
-                        G3_L4_B.setText(String.valueOf(b) + "B");
+                        G3_L4_A.setText(A);
+                        G3_L4_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -594,8 +564,8 @@ public class game3 extends AppCompatActivity {
                         G3_L5_3.setText(String.valueOf(Num3));
                         G3_L5_4.setText(String.valueOf(Num4));
                         G3_L5_5.setText(String.valueOf(Num5));
-                        G3_L5_A.setText(String.valueOf(a) + "A");
-                        G3_L5_B.setText(String.valueOf(b) + "B");
+                        G3_L5_A.setText(A);
+                        G3_L5_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -606,8 +576,8 @@ public class game3 extends AppCompatActivity {
                         G3_L6_3.setText(String.valueOf(Num3));
                         G3_L6_4.setText(String.valueOf(Num4));
                         G3_L6_5.setText(String.valueOf(Num5));
-                        G3_L6_A.setText(String.valueOf(a) + "A");
-                        G3_L6_B.setText(String.valueOf(b) + "B");
+                        G3_L6_A.setText(A);
+                        G3_L6_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -618,8 +588,8 @@ public class game3 extends AppCompatActivity {
                         G3_L7_3.setText(String.valueOf(Num3));
                         G3_L7_4.setText(String.valueOf(Num4));
                         G3_L7_5.setText(String.valueOf(Num5));
-                        G3_L7_A.setText(String.valueOf(a) + "A");
-                        G3_L7_B.setText(String.valueOf(b) + "B");
+                        G3_L7_A.setText(A);
+                        G3_L7_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -630,8 +600,8 @@ public class game3 extends AppCompatActivity {
                         G3_L8_3.setText(String.valueOf(Num3));
                         G3_L8_4.setText(String.valueOf(Num4));
                         G3_L8_5.setText(String.valueOf(Num5));
-                        G3_L8_A.setText(String.valueOf(a) + "A");
-                        G3_L8_B.setText(String.valueOf(b) + "B");
+                        G3_L8_A.setText(A);
+                        G3_L8_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -642,8 +612,8 @@ public class game3 extends AppCompatActivity {
                         G3_L9_3.setText(String.valueOf(Num3));
                         G3_L9_4.setText(String.valueOf(Num4));
                         G3_L9_5.setText(String.valueOf(Num5));
-                        G3_L9_A.setText(String.valueOf(a) + "A");
-                        G3_L9_B.setText(String.valueOf(b) + "B");
+                        G3_L9_A.setText(A);
+                        G3_L9_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -654,8 +624,8 @@ public class game3 extends AppCompatActivity {
                         G3_L10_3.setText(String.valueOf(Num3));
                         G3_L10_4.setText(String.valueOf(Num4));
                         G3_L10_5.setText(String.valueOf(Num5));
-                        G3_L10_A.setText(String.valueOf(a) + "A");
-                        G3_L10_B.setText(String.valueOf(b) + "B");
+                        G3_L10_A.setText(A);
+                        G3_L10_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -666,8 +636,8 @@ public class game3 extends AppCompatActivity {
                         G3_L11_3.setText(String.valueOf(Num3));
                         G3_L11_4.setText(String.valueOf(Num4));
                         G3_L11_5.setText(String.valueOf(Num5));
-                        G3_L11_A.setText(String.valueOf(a) + "A");
-                        G3_L11_B.setText(String.valueOf(b) + "B");
+                        G3_L11_A.setText(A);
+                        G3_L11_B.setText(B);
                         if (win) {
                             dialog();
                         }
@@ -678,8 +648,8 @@ public class game3 extends AppCompatActivity {
                         G3_L12_3.setText(String.valueOf(Num3));
                         G3_L12_4.setText(String.valueOf(Num4));
                         G3_L12_5.setText(String.valueOf(Num5));
-                        G3_L12_A.setText(String.valueOf(a) + "A");
-                        G3_L12_B.setText(String.valueOf(b) + "B");
+                        G3_L12_A.setText(A);
+                        G3_L12_B.setText(B);
                         if (win) {
                             dialog();
                         } else {
@@ -697,7 +667,8 @@ public class game3 extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(this, "please insert 5 numbers", Toast.LENGTH_SHORT).show();
+            String toast = getResources().getString(R.string.please_insert_5_numbers);
+            Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
     }
     private void dialog()
