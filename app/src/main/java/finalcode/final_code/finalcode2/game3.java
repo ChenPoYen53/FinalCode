@@ -27,11 +27,10 @@ public class game3 extends AppCompatActivity {
     private TextView G3_1,G3_2,G3_3,G3_4,G3_5,G3_6,G3_7,G3_8,G3_9,G3_0,G3_C,G3_OK,G3_txv1,G3_txv2,G3_txv3,G3_txv4,G3_txv5,
             G3_L1_1,G3_L1_2,G3_L1_3,G3_L1_4,G3_L1_5,G3_L1_A,G3_L1_B,G3_L2_1,G3_L2_2,G3_L2_3,G3_L2_4,G3_L2_5,G3_L2_A,G3_L2_B,G3_L3_1,G3_L3_2,G3_L3_3,G3_L3_4,G3_L3_5,G3_L3_A,G3_L3_B,G3_L4_1,G3_L4_2,G3_L4_3,G3_L4_4,G3_L4_5,G3_L4_A,G3_L4_B,
             G3_L5_1,G3_L5_2,G3_L5_3,G3_L5_4,G3_L5_5,G3_L5_A,G3_L5_B,G3_L6_1,G3_L6_2,G3_L6_3,G3_L6_4,G3_L6_5,G3_L6_A,G3_L6_B,G3_L7_1,G3_L7_2,G3_L7_3,G3_L7_4,G3_L7_5,G3_L7_A,G3_L7_B,G3_L8_1,G3_L8_2,G3_L8_3,G3_L8_4,G3_L8_5,G3_L8_A,G3_L8_B,
-            G3_L9_1,G3_L9_2,G3_L9_3,G3_L9_4,G3_L9_5,G3_L9_A,G3_L9_B,G3_L10_1,G3_L10_2,G3_L10_3,G3_L10_4,G3_L10_5,G3_L10_A,G3_L10_B,G3_L11_1,G3_L11_2,G3_L11_3,G3_L11_4,G3_L11_5,G3_L11_A,G3_L11_B,G3_L12_1,G3_L12_2,G3_L12_3,G3_L12_4,G3_L12_5,G3_L12_A,G3_L12_B,answer;
-    private Button again,home,L_again,L_home,finish,stay,leave_finish,leave_continue;
+            G3_L9_1,G3_L9_2,G3_L9_3,G3_L9_4,G3_L9_5,G3_L9_A,G3_L9_B,G3_L10_1,G3_L10_2,G3_L10_3,G3_L10_4,G3_L10_5,G3_L10_A,G3_L10_B,G3_L11_1,G3_L11_2,G3_L11_3,G3_L11_4,G3_L11_5,G3_L11_A,G3_L11_B,G3_L12_1,G3_L12_2,G3_L12_3,G3_L12_4,G3_L12_5,G3_L12_A,G3_L12_B;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
-    private Game game ;
+    private final MyDialog myDialog = new MyDialog(game3.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -501,7 +500,7 @@ public class game3 extends AppCompatActivity {
                 resultList.add(Num4);
                 resultList.add(Num5);
                 if (randomNumList.size() > 0) {
-                    game = new Game(randomNumList,resultList);
+                    Game game = new Game(randomNumList, resultList);
                     int a = game.getA();
                     int b = game.getB();
                     boolean win = game.isWin();
@@ -518,7 +517,7 @@ public class game3 extends AppCompatActivity {
                         G3_L1_A.setText(A);
                         G3_L1_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && G3_L2_1.getText().equals("")) {
@@ -530,7 +529,7 @@ public class game3 extends AppCompatActivity {
                         G3_L2_A.setText(A);
                         G3_L2_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && G3_L3_1.getText().equals("")) {
@@ -542,7 +541,7 @@ public class game3 extends AppCompatActivity {
                         G3_L3_A.setText(A);
                         G3_L3_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && G3_L4_1.getText().equals("")) {
@@ -554,7 +553,7 @@ public class game3 extends AppCompatActivity {
                         G3_L4_A.setText(A);
                         G3_L4_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && G3_L5_1.getText().equals("")) {
@@ -566,7 +565,7 @@ public class game3 extends AppCompatActivity {
                         G3_L5_A.setText(A);
                         G3_L5_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && G3_L6_1.getText().equals("")) {
@@ -578,7 +577,7 @@ public class game3 extends AppCompatActivity {
                         G3_L6_A.setText(A);
                         G3_L6_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && !G3_L6_1.getText().equals("") && G3_L7_1.getText().equals("")) {
@@ -590,7 +589,7 @@ public class game3 extends AppCompatActivity {
                         G3_L7_A.setText(A);
                         G3_L7_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && !G3_L6_1.getText().equals("") && !G3_L7_1.getText().equals("") && G3_L8_1.getText().equals("")) {
@@ -602,7 +601,7 @@ public class game3 extends AppCompatActivity {
                         G3_L8_A.setText(A);
                         G3_L8_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && !G3_L6_1.getText().equals("") && !G3_L7_1.getText().equals("") && !G3_L8_1.getText().equals("") && G3_L9_1.getText().equals("")) {
@@ -614,7 +613,7 @@ public class game3 extends AppCompatActivity {
                         G3_L9_A.setText(A);
                         G3_L9_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && !G3_L6_1.getText().equals("") && !G3_L7_1.getText().equals("") && !G3_L8_1.getText().equals("") && !G3_L9_1.getText().equals("") && G3_L10_1.getText().equals("")) {
@@ -626,7 +625,7 @@ public class game3 extends AppCompatActivity {
                         G3_L10_A.setText(A);
                         G3_L10_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && !G3_L6_1.getText().equals("") && !G3_L7_1.getText().equals("") && !G3_L8_1.getText().equals("") && !G3_L9_1.getText().equals("") && !G3_L10_1.getText().equals("") && G3_L11_1.getText().equals("")) {
@@ -638,7 +637,7 @@ public class game3 extends AppCompatActivity {
                         G3_L11_A.setText(A);
                         G3_L11_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!G3_L1_1.getText().equals("") && !G3_L2_1.getText().equals("") && !G3_L3_1.getText().equals("") && !G3_L4_1.getText().equals("") && !G3_L5_1.getText().equals("") && !G3_L6_1.getText().equals("") && !G3_L7_1.getText().equals("") && !G3_L8_1.getText().equals("") && !G3_L9_1.getText().equals("") && !G3_L10_1.getText().equals("") && !G3_L11_1.getText().equals("") && G3_L12_1.getText().equals("")) {
@@ -650,9 +649,9 @@ public class game3 extends AppCompatActivity {
                         G3_L12_A.setText(A);
                         G3_L12_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         } else {
-                            dialog_lose();
+                            myDialog.dialog_lose(randomNumList);
                         }
                         resultList.clear();
                     }
@@ -670,134 +669,14 @@ public class game3 extends AppCompatActivity {
             Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
     }
-    private void dialog()
-    {
-        Dialog dialog = new Dialog(game3.this);
-        dialog.setContentView(R.layout.dialog);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        again = dialog.findViewById(R.id.again);
-        home = dialog.findViewById(R.id.home);
-
-        again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                recreate();
-            }
-        });
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_lose()
-    {
-        Dialog dialog = new Dialog(game3.this);
-        dialog.setContentView(R.layout.dialog_lose);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        L_again = dialog.findViewById(R.id.L_again);
-        L_home = dialog.findViewById(R.id.L_home);
-        answer = dialog.findViewById(R.id.answer);
-
-        String text = "Answer: "+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3)+randomNumList.get(4);
-        answer.setText(text);
-
-        L_again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                recreate();
-            }
-        });
-        L_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_backPress()
-    {
-        Dialog dialog = new Dialog(game3.this);
-        dialog.setContentView(R.layout.back_pressed);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        finish = dialog.findViewById(R.id.finish);
-        stay = dialog.findViewById(R.id.stay);
-
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                dialog.dismiss();
-            }
-        });
-        stay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-
-    private void dialog_leaveHint()
-    {
-        Dialog dialog = new Dialog(game3.this);
-        dialog.setContentView(R.layout.leavehint);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        leave_finish = dialog.findViewById(R.id.leave_finish);
-        leave_continue = dialog.findViewById(R.id.leave_continue);
-
-        leave_finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                dialog.dismiss();
-            }
-        });
-        leave_continue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-
     @Override
     public void onBackPressed() {
-        dialog_backPress();
+        myDialog.dialog_backPress();
     }
 
     @Override
     protected void onUserLeaveHint() {
-       dialog_leaveHint();
+       myDialog.dialog_leaveHint();
     }
 
     //Menu Resources

@@ -3,38 +3,27 @@ package finalcode.final_code.finalcode2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
-import androidx.core.content.res.ResourcesCompat;
-import android.app.Dialog;
-import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Random;
-import java.util.Set;
 
 public class Mastermind extends AppCompatActivity {
     private static final String TAG = "Mastermind";
     private TextView M_L1_1,M_L1_2,M_L1_3,M_L1_4,M_L1_5,M_L1_6,M_L1_7,M_L1_8,M_L2_1,M_L2_2,M_L2_3,M_L2_4,M_L2_5,M_L2_6,M_L2_7,M_L2_8,
             M_L3_1,M_L3_2,M_L3_3,M_L3_4,M_L3_5,M_L3_6,M_L3_7,M_L3_8,M_L4_1,M_L4_2,M_L4_3,M_L4_4,M_L4_5,M_L4_6,M_L4_7,M_L4_8,M_L5_1,M_L5_2,M_L5_3,M_L5_4,M_L5_5,M_L5_6,M_L5_7,M_L5_8,
             M_L6_1,M_L6_2,M_L6_3,M_L6_4,M_L6_5,M_L6_6,M_L6_7,M_L6_8,M_L7_1,M_L7_2,M_L7_3,M_L7_4,M_L7_5,M_L7_6,M_L7_7,M_L7_8,M_L8_1,M_L8_2,M_L8_3,M_L8_4,M_L8_5,M_L8_6,M_L8_7,M_L8_8,
-            M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_yellow,M_darkblue,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace,M_answer1,M_answer2,M_answer3,M_answer4,leave_continue,leave_finish;
-    private Button again,home,ML_again,ML_home,finish,stay;
+            M_green,M_blue,M_purple,M_pink,M_red,M_orange,M_yellow,M_darkblue,M_L0_1,M_L0_2,M_L0_3,M_L0_4,ok,backspace;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
+    private final MyDialog myDialog = new MyDialog(Mastermind.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -463,7 +452,7 @@ public class Mastermind extends AppCompatActivity {
                         resultList.add(8);
                     }
 
-                    Log.d(TAG, "resultList..." + resultList.get(0) + resultList.get(1) + resultList.get(2) + resultList.get(3));
+                    //Log.d(TAG, "resultList..." + resultList.get(0) + resultList.get(1) + resultList.get(2) + resultList.get(3));
 
                     int Num1 = resultList.get(0);
                     int Num2 = resultList.get(1);
@@ -596,7 +585,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_6.setBackground(result_red);
                                     M_L8_7.setBackground(result_red);
                                     M_L8_8.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 0 & b == 3) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -631,7 +620,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_5.setBackground(result_red);
                                     M_L8_6.setBackground(result_red);
                                     M_L8_7.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 0 & b == 2) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -658,7 +647,7 @@ public class Mastermind extends AppCompatActivity {
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
                                     M_L8_5.setBackground(result_red);
                                     M_L8_6.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 0 & b == 1) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -677,7 +666,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L7_5.setBackground(result_red);
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
                                     M_L8_5.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 0 & b == 0) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -720,7 +709,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_6.setBackground(result_x);
                                     M_L8_7.setBackground(result_x);
                                     M_L8_8.setBackground(result_x);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             }
                             if (a == 1 && b == 3) {
@@ -764,7 +753,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_6.setBackground(result_red);
                                     M_L8_7.setBackground(result_red);
                                     M_L8_8.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 1 && b == 2) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -799,7 +788,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_5.setBackground(result_green);
                                     M_L8_6.setBackground(result_red);
                                     M_L8_7.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 1 && b == 1) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -826,7 +815,7 @@ public class Mastermind extends AppCompatActivity {
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
                                     M_L8_5.setBackground(result_green);
                                     M_L8_6.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 1 && b == 0) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -845,7 +834,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L7_5.setBackground(result_green);
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
                                     M_L8_5.setBackground(result_green);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             }
                             if (a == 2 && b == 2) {
@@ -889,7 +878,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_6.setBackground(result_green);
                                     M_L8_7.setBackground(result_red);
                                     M_L8_8.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 2 && b == 1) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -924,7 +913,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_5.setBackground(result_green);
                                     M_L8_6.setBackground(result_green);
                                     M_L8_7.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 2 && b == 0) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -951,7 +940,7 @@ public class Mastermind extends AppCompatActivity {
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
                                     M_L8_5.setBackground(result_green);
                                     M_L8_6.setBackground(result_green);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             }
                             if (a == 3 && b == 1) {
@@ -995,7 +984,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_6.setBackground(result_green);
                                     M_L8_7.setBackground(result_green);
                                     M_L8_8.setBackground(result_red);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             } else if (a == 3 && b == 0) {
                                 if (M_L1_5.getBackground().equals(M2)) {
@@ -1030,7 +1019,7 @@ public class Mastermind extends AppCompatActivity {
                                     M_L8_5.setBackground(result_green);
                                     M_L8_6.setBackground(result_green);
                                     M_L8_7.setBackground(result_green);
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             }
                             if (a == 4) {
@@ -1039,56 +1028,56 @@ public class Mastermind extends AppCompatActivity {
                                     M_L1_6.setBackground(result_green);
                                     M_L1_7.setBackground(result_green);
                                     M_L1_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && M_L2_5.getBackground().equals(M2)) {
                                     M_L2_5.setBackground(result_green);
                                     M_L2_6.setBackground(result_green);
                                     M_L2_7.setBackground(result_green);
                                     M_L2_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && M_L3_5.getBackground().equals(M2)) {
                                     M_L3_5.setBackground(result_green);
                                     M_L3_6.setBackground(result_green);
                                     M_L3_7.setBackground(result_green);
                                     M_L3_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && M_L4_5.getBackground().equals(M2)) {
                                     M_L4_5.setBackground(result_green);
                                     M_L4_6.setBackground(result_green);
                                     M_L4_7.setBackground(result_green);
                                     M_L4_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2)) {
                                     M_L5_5.setBackground(result_green);
                                     M_L5_6.setBackground(result_green);
                                     M_L5_7.setBackground(result_green);
                                     M_L5_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && M_L6_5.getBackground().equals(M2)) {
                                     M_L6_5.setBackground(result_green);
                                     M_L6_6.setBackground(result_green);
                                     M_L6_7.setBackground(result_green);
                                     M_L6_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && !M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && M_L7_5.getBackground().equals(M2)) {
                                     M_L7_5.setBackground(result_green);
                                     M_L7_6.setBackground(result_green);
                                     M_L7_7.setBackground(result_green);
                                     M_L7_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 } else if (!M_L1_5.getBackground().equals(M2) && !M_L2_5.getBackground().equals(M2) && !M_L3_5.getBackground().equals(M2) && !M_L4_5.getBackground().equals(M2) && M_L5_5.getBackground().equals(M2) && !M_L6_5.getBackground().equals(M2) && !M_L7_5.getBackground().equals(M2) && M_L8_5.getBackground().equals(M2)) {
                                     M_L8_5.setBackground(result_green);
                                     M_L8_6.setBackground(result_green);
                                     M_L8_7.setBackground(result_green);
                                     M_L8_8.setBackground(result_green);
-                                    dialog();
+                                    myDialog.dialog();
                                 }
                             }
                             if (!M_L8_1.getBackground().equals(M)) {
                                 if (win) {
-                                    dialog();
+                                    myDialog.dialog();
                                 } else {
-                                    dialog_lose();
+                                    myDialog.Mastermind_dialog_lose(randomNumList);
                                 }
                             }
                         }
@@ -1101,231 +1090,6 @@ public class Mastermind extends AppCompatActivity {
                 }
             }
         });
-    }
-    private void dialog()
-    {
-        Dialog dialog = new Dialog(Mastermind.this);
-        dialog.setContentView(R.layout.dialog);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        again = dialog.findViewById(R.id.again);
-        home = dialog.findViewById(R.id.home);
-
-        again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                recreate();
-            }
-        });
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_lose()
-    {
-        final Drawable green = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_green);
-        final Drawable blue = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_blue);
-        final Drawable purple = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_purple);
-        final Drawable pink = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_pink);
-        final Drawable red = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_red);
-        final Drawable orange = AppCompatResources.getDrawable(Mastermind.this,R.drawable.mastermind_orange);
-
-        Dialog dialog = new Dialog(Mastermind.this);
-        dialog.setContentView(R.layout.dialog_lose_masrermind);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        ML_again = dialog.findViewById(R.id.ML_again);
-        ML_home = dialog.findViewById(R.id.ML_home);
-        M_answer1 = dialog.findViewById(R.id.M_answer1);
-        M_answer2 = dialog.findViewById(R.id.M_answer2);
-        M_answer3 = dialog.findViewById(R.id.M_answer3);
-        M_answer4 = dialog.findViewById(R.id.M_answer4);
-
-        if(randomNumList.get(0).equals(1))
-        {
-            M_answer1.setBackground(green);
-        }
-        else if(randomNumList.get(0).equals(2))
-        {
-            M_answer1.setBackground(blue);
-        }
-        else if(randomNumList.get(0).equals(3))
-        {
-            M_answer1.setBackground(purple);
-        }
-        else if(randomNumList.get(0).equals(4))
-        {
-            M_answer1.setBackground(pink);
-        }
-        else if(randomNumList.get(0).equals(5))
-        {
-            M_answer1.setBackground(red);
-        }
-        else if(randomNumList.get(0).equals(6))
-        {
-            M_answer1.setBackground(orange);
-        }
-
-        if(randomNumList.get(1).equals(1))
-        {
-            M_answer2.setBackground(green);
-        }
-        else if(randomNumList.get(1).equals(2))
-        {
-            M_answer2.setBackground(blue);
-        }
-        else if(randomNumList.get(1).equals(3))
-        {
-            M_answer2.setBackground(purple);
-        }
-        else if(randomNumList.get(1).equals(4))
-        {
-            M_answer2.setBackground(pink);
-        }
-        else if(randomNumList.get(1).equals(5))
-        {
-            M_answer2.setBackground(red);
-        }
-        else if(randomNumList.get(1).equals(6))
-        {
-            M_answer2.setBackground(orange);
-        }
-
-        if(randomNumList.get(2).equals(1))
-        {
-            M_answer3.setBackground(green);
-        }
-        else if(randomNumList.get(2).equals(2))
-        {
-            M_answer3.setBackground(blue);
-        }
-        else if(randomNumList.get(2).equals(3))
-        {
-            M_answer3.setBackground(purple);
-        }
-        else if(randomNumList.get(2).equals(4))
-        {
-            M_answer3.setBackground(pink);
-        }
-        else if(randomNumList.get(2).equals(5))
-        {
-            M_answer3.setBackground(red);
-        }
-        else if(randomNumList.get(2).equals(6))
-        {
-            M_answer3.setBackground(orange);
-        }
-
-        if(randomNumList.get(3).equals(1))
-        {
-            M_answer4.setBackground(green);
-        }
-        else if(randomNumList.get(3).equals(2))
-        {
-            M_answer4.setBackground(blue);
-        }
-        else if(randomNumList.get(3).equals(3))
-        {
-            M_answer4.setBackground(purple);
-        }
-        else if(randomNumList.get(3).equals(4))
-        {
-            M_answer4.setBackground(pink);
-        }
-        else if(randomNumList.get(3).equals(5))
-        {
-            M_answer4.setBackground(red);
-        }
-        else if(randomNumList.get(3).equals(6))
-        {
-            M_answer4.setBackground(orange);
-        }
-
-        ML_again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                recreate();
-            }
-        });
-        ML_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_backPress()
-    {
-        Dialog dialog = new Dialog(Mastermind.this);
-        dialog.setContentView(R.layout.back_pressed);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        finish = dialog.findViewById(R.id.finish);
-        stay = dialog.findViewById(R.id.stay);
-
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                dialog.dismiss();
-            }
-        });
-        stay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_leaveHint()
-    {
-        Dialog dialog = new Dialog(Mastermind.this);
-        dialog.setContentView(R.layout.leavehint);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        leave_finish = dialog.findViewById(R.id.leave_finish);
-        leave_continue = dialog.findViewById(R.id.leave_continue);
-
-        leave_finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                dialog.dismiss();
-            }
-        });
-        leave_continue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
     }
     //Menu Resources
     @Override
@@ -1356,11 +1120,11 @@ public class Mastermind extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        dialog_backPress();
+        myDialog.dialog_backPress();
     }
 
     @Override
     protected void onUserLeaveHint() {
-        dialog_leaveHint();
+        myDialog.dialog_leaveHint();
     }
 }

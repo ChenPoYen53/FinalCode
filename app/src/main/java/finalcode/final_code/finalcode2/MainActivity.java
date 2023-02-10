@@ -2,13 +2,11 @@ package finalcode.final_code.finalcode2;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private Button again,home,L_again,L_home,finish,stay,leave_continue,leave_finish;
     private final List<Integer> resultList = new ArrayList<>();
     private List<Integer> randomNumList = new ArrayList<>();
+    private final MyDialog myDialog = new MyDialog(MainActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -423,7 +422,7 @@ public class MainActivity extends AppCompatActivity {
                         L1_A.setText(A);
                         L1_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && L2_1.getText().equals("")) {
@@ -434,7 +433,7 @@ public class MainActivity extends AppCompatActivity {
                         L2_A.setText(A);
                         L2_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && !L2_1.getText().equals("") && L3_1.getText().equals("")) {
@@ -445,7 +444,7 @@ public class MainActivity extends AppCompatActivity {
                         L3_A.setText(A);
                         L3_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && !L2_1.getText().equals("") && !L3_1.getText().equals("") && L4_1.getText().equals("")) {
@@ -456,7 +455,7 @@ public class MainActivity extends AppCompatActivity {
                         L4_A.setText(A);
                         L4_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && !L2_1.getText().equals("") && !L3_1.getText().equals("") && !L4_1.getText().equals("") && L5_1.getText().equals("")) {
@@ -467,7 +466,7 @@ public class MainActivity extends AppCompatActivity {
                         L5_A.setText(A);
                         L5_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && !L2_1.getText().equals("") && !L3_1.getText().equals("") && !L4_1.getText().equals("") && !L5_1.getText().equals("") && L6_1.getText().equals("")) {
@@ -478,7 +477,7 @@ public class MainActivity extends AppCompatActivity {
                         L6_A.setText(A);
                         L6_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && !L2_1.getText().equals("") && !L3_1.getText().equals("") && !L4_1.getText().equals("") && !L5_1.getText().equals("") && !L6_1.getText().equals("") && L7_1.getText().equals("")) {
@@ -489,7 +488,7 @@ public class MainActivity extends AppCompatActivity {
                         L7_A.setText(A);
                         L7_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         }
                         resultList.clear();
                     } else if (!L1_1.getText().equals("") && !L2_1.getText().equals("") && !L3_1.getText().equals("") && !L4_1.getText().equals("") && !L5_1.getText().equals("") && !L6_1.getText().equals("") && !L7_1.getText().equals("") && L8_1.getText().equals("")) {
@@ -500,9 +499,9 @@ public class MainActivity extends AppCompatActivity {
                         L8_A.setText(A);
                         L8_B.setText(B);
                         if (win) {
-                            dialog();
+                            myDialog.dialog();
                         } else {
-                            dialog_lose();
+                            myDialog.dialog_lose(randomNumList);
                         }
                         resultList.clear();
                     }
@@ -519,127 +518,6 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, toast, Toast.LENGTH_SHORT).show();
         }
     }
-    private void dialog()
-    {
-        Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.dialog);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        again = dialog.findViewById(R.id.again);
-        home = dialog.findViewById(R.id.home);
-
-        again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                recreate();
-            }
-        });
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_lose()
-    {
-        Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.dialog_lose);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        L_again = dialog.findViewById(R.id.L_again);
-        L_home = dialog.findViewById(R.id.L_home);
-        answer = dialog.findViewById(R.id.answer);
-
-        String Answer = getString(R.string.Answer);
-        String text = Answer+randomNumList.get(0)+""+randomNumList.get(1)+""+randomNumList.get(2)+""+randomNumList.get(3);
-        answer.setText(text);
-
-        L_again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                recreate();
-            }
-        });
-        L_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_backPress()
-    {
-        Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.back_pressed);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        finish = dialog.findViewById(R.id.finish);
-        stay = dialog.findViewById(R.id.stay);
-
-        finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        stay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-    private void dialog_leaveHint()
-    {
-        Dialog dialog = new Dialog(MainActivity.this);
-        dialog.setContentView(R.layout.leavehint);
-
-        int width = WindowManager.LayoutParams.MATCH_PARENT;
-        int height = WindowManager.LayoutParams.WRAP_CONTENT;
-
-        leave_finish = dialog.findViewById(R.id.leave_finish);
-        leave_continue = dialog.findViewById(R.id.leave_continue);
-
-        leave_finish.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-                finish();
-            }
-        });
-        leave_continue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.setCancelable(false);
-        dialog.getWindow().setLayout(width,height);
-        dialog.show();
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         //menu.findItem(R.menu.refresh);
@@ -662,11 +540,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        dialog_backPress();
+        myDialog.dialog_backPress();
     }
 
     @Override
     protected void onUserLeaveHint() {
-        dialog_leaveHint();
+        myDialog.dialog_leaveHint();
     }
 }
