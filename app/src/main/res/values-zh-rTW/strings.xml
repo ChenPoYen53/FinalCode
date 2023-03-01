@@ -11,10 +11,10 @@
     <string name="don_t_give_up_try_again">別放棄，再試一次!</string>
     <string name="question">問題</string>
     <string name="how_to_play">遊戲規則</string>
-    <string name="explanation1">您必須利用八次機會猜到一組四位數字！\n\n1A - 表示您猜的數字是對的並且在對的位子上。\n\n1B - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
-    <string name="explanation2">您必須利用十次機會猜到一組四位數字！\n\n1A - 表示您猜的數字是對的並且在對的位子上。\n\n1B - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
-    <string name="explanation3">您必須利用十二次機會猜到一組五位數字！\n\n1A - 表示您猜的數字是對的並且在對的位子上。\n\n1B - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
-    <string name="explanation4">您必須利用八次機會猜到四個顏色！\n\n1A - 表示您猜的顏色是對的並且在對的位子上。\n\n1B - 表示您猜的顏色是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個顏色，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的顏色。</string>
+    <string name="explanation1">您必須利用八次機會猜到一組四位數字！\n\nA - 表示您猜的數字是對的並且在對的位子上。\n\nB - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
+    <string name="explanation2">您必須利用十次機會猜到一組四位數字！\n\nA - 表示您猜的數字是對的並且在對的位子上。\n\nB - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
+    <string name="explanation3">您必須利用十二次機會猜到一組五位數字！\n\nA - 表示您猜的數字是對的並且在對的位子上。\n\nB - 表示您猜的數字是對的但不在對的位子上。\n\n1A2B - 代表您猜對三個數字，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的數字。</string>
+    <string name="explanation4">您必須利用八次機會猜到四個顏色!\n\n綠色 - 表示您猜的顏色是對的並且在對的位子上。\n\n紅色 - 表示您猜的顏色是對的但不在對的位子上。\n\n1綠2紅 - 代表您猜對三個顏色，一個在對的位子上，兩個在不對的位子上。\n\n*不能有重複的顏色。</string>
     <string name="back">回上頁</string>
     <string name="please_insert_5_numbers">請輸入五個數字</string>
     <string name="please_insert_4_numbers">請輸入四個數字</string>

@@ -2,6 +2,7 @@ package finalcode.final_code.finalcode2;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Game
 {
@@ -17,11 +18,11 @@ public class Game
         this.randomNumList= randomNumList;
 
         for (int i = 0; i < randomNumList.size(); i++) {
-            if (resultList.get(i) == randomNumList.get(i)) {
+            if (Objects.equals(resultList.get(i), randomNumList.get(i))) {
                 a++;
             } else {
                 for (int j = 0; j < 4; j++) {
-                    if (resultList.get(i) == randomNumList.get(j)) {
+                    if (Objects.equals(resultList.get(i), randomNumList.get(j))) {
                         b++;
                     }
                 }

@@ -8,7 +8,6 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.content.res.AppCompatResources;
 
 import java.util.List;
@@ -28,7 +27,7 @@ public class MyDialog
 
     public void dialog()
     {
-        dialog = new android.app.Dialog(context);
+        dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog);
 
         Button again = dialog.findViewById(R.id.again);
@@ -54,7 +53,7 @@ public class MyDialog
     }
     public void dialog_lose(List<Integer> randomNumList)
     {
-        dialog = new android.app.Dialog(context);
+        dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_lose);
 
         Button l_again = dialog.findViewById(R.id.L_again);
@@ -85,7 +84,7 @@ public class MyDialog
     }
     public void dialog_backPress()
     {
-        dialog = new android.app.Dialog(context);
+        dialog = new Dialog(context);
         dialog.setContentView(R.layout.back_pressed);
 
         Button finish = dialog.findViewById(R.id.finish);
@@ -110,7 +109,7 @@ public class MyDialog
     }
     public void dialog_leaveHint()
     {
-        dialog = new android.app.Dialog(context);
+        dialog = new Dialog(context);
         dialog.setContentView(R.layout.leavehint);
 
         Button leave_finish = dialog.findViewById(R.id.leave_finish);
@@ -141,6 +140,8 @@ public class MyDialog
         final Drawable pink = AppCompatResources.getDrawable(context,R.drawable.mastermind_pink);
         final Drawable red = AppCompatResources.getDrawable(context,R.drawable.mastermind_red);
         final Drawable orange = AppCompatResources.getDrawable(context,R.drawable.mastermind_orange);
+        final Drawable darkblue = AppCompatResources.getDrawable(context,R.drawable.mastermind_darkblue);
+        final Drawable yellow = AppCompatResources.getDrawable(context,R.drawable.mastermind_yellow);
 
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_lose_masrermind);
@@ -152,6 +153,7 @@ public class MyDialog
         TextView M_answer3 = dialog.findViewById(R.id.M_answer3);
         TextView M_answer4 = dialog.findViewById(R.id.M_answer4);
 
+        //First answer
         if(randomNumList.get(0).equals(1))
         {
             M_answer1.setBackground(green);
@@ -166,17 +168,26 @@ public class MyDialog
         }
         else if(randomNumList.get(0).equals(4))
         {
-            M_answer1.setBackground(pink);
+            M_answer1.setBackground(yellow);
         }
         else if(randomNumList.get(0).equals(5))
         {
-            M_answer1.setBackground(red);
+            M_answer1.setBackground(pink);
         }
         else if(randomNumList.get(0).equals(6))
         {
+            M_answer1.setBackground(red);
+        }
+        else if (randomNumList.get(0).equals(7))
+        {
             M_answer1.setBackground(orange);
         }
+        else if (randomNumList.get(0).equals(8))
+        {
+            M_answer1.setBackground(darkblue);
+        }
 
+        //Second answer
         if(randomNumList.get(1).equals(1))
         {
             M_answer2.setBackground(green);
@@ -191,17 +202,26 @@ public class MyDialog
         }
         else if(randomNumList.get(1).equals(4))
         {
-            M_answer2.setBackground(pink);
+            M_answer2.setBackground(yellow);
         }
         else if(randomNumList.get(1).equals(5))
         {
-            M_answer2.setBackground(red);
+            M_answer2.setBackground(pink);
         }
         else if(randomNumList.get(1).equals(6))
         {
+            M_answer2.setBackground(red);
+        }
+        else if (randomNumList.get(1).equals(7))
+        {
             M_answer2.setBackground(orange);
         }
+        else if (randomNumList.get(1).equals(8))
+        {
+            M_answer2.setBackground(darkblue);
+        }
 
+        //Third answer
         if(randomNumList.get(2).equals(1))
         {
             M_answer3.setBackground(green);
@@ -216,17 +236,26 @@ public class MyDialog
         }
         else if(randomNumList.get(2).equals(4))
         {
-            M_answer3.setBackground(pink);
+            M_answer3.setBackground(yellow);
         }
         else if(randomNumList.get(2).equals(5))
         {
-            M_answer3.setBackground(red);
+            M_answer3.setBackground(pink);
         }
         else if(randomNumList.get(2).equals(6))
         {
+            M_answer3.setBackground(red);
+        }
+        else if (randomNumList.get(2).equals(7))
+        {
             M_answer3.setBackground(orange);
         }
+        else if (randomNumList.get(2).equals(8))
+        {
+            M_answer3.setBackground(darkblue);
+        }
 
+        //Fourth answer
         if(randomNumList.get(3).equals(1))
         {
             M_answer4.setBackground(green);
@@ -241,15 +270,23 @@ public class MyDialog
         }
         else if(randomNumList.get(3).equals(4))
         {
-            M_answer4.setBackground(pink);
+            M_answer4.setBackground(yellow);
         }
         else if(randomNumList.get(3).equals(5))
         {
-            M_answer4.setBackground(red);
+            M_answer4.setBackground(pink);
         }
         else if(randomNumList.get(3).equals(6))
         {
+            M_answer4.setBackground(red);
+        }
+        else if (randomNumList.get(3).equals(7))
+        {
             M_answer4.setBackground(orange);
+        }
+        else if (randomNumList.get(3).equals(8))
+        {
+            M_answer4.setBackground(darkblue);
         }
 
         ML_again.setOnClickListener(new View.OnClickListener() {
